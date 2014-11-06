@@ -11,6 +11,6 @@ app.controller('RemoteCtrl', function ($scope, $http, KODI_URL) {
 
     }
     $scope.left = function() {
-      $http.post(KODI_URL + "Input.Left", { request: { jsonrpc: "2.0", id: 1, method: "Input.Left"}});
+      $http.post(KODI_URL, { jsonrpc: "2.0", id: 1, method: "Input.Left"});
     }
   });

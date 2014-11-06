@@ -14,11 +14,7 @@ var app = angular.module('kodiAngularApp', [
     'ngResource',
     'ngRoute'
   ]);
-  app.constant('KODI_URL', 'http://localhost:8080/jsonrpc?');
-  app.config(function($httpProvider) {
-    $httpProvider.defaults.useXDomain = true;
-    delete $httpProvider.defaults.headers.common['X-Requested-With'];
-  });
+  app.constant('KODI_URL', 'http://localhost:8080/jsonrpc');
 
   app.config(function ($routeProvider) {
     $routeProvider
