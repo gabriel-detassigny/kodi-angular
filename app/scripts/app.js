@@ -1,3 +1,5 @@
+/* global app:true */
+
 'use strict';
 
 /**
@@ -8,22 +10,35 @@
  *
  * Main module of the application.
  */
-angular
-  .module('kodiAngularApp', [
+var app = angular.module('kodiAngularApp', [
     'ngResource',
     'ngRoute'
-  ])
-  .config(function ($routeProvider) {
+  ]);
+  app.constant('KODI_URL', 'http://localhost:8080/jsonrpc?');
+  app.config(function($httpProvider) {
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+  });
+
+  app.config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+      .when('/remote', {
+        templateUrl: 'views/remote.html',
+        controller: 'RemoteCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .when('/tvshows', {
+        templateUrl: 'views/tvshows.html',
+        controller: 'TvShowsCtrl'
+      })
+      .when('/movies', {
+        templateUrl: 'views/movies.html',
+        controller: 'MoviesCtrl'
+      })
+      .when('/music', {
+        templateUrl: 'views/music.html',
+        controller: 'MusicCtrl'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/remote'
       });
   });
