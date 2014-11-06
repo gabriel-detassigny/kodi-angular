@@ -1,11 +1,10 @@
+/* global app:true */
+
 'use strict';
 
 app.factory('Remote',
-  function(KODI_URL) {
+  function() {
     var Remote = {
-      left: function() {
-        return "toto";
-      }
     };
     return Remote;
   }
