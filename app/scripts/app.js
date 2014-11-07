@@ -10,11 +10,14 @@
  *
  * Main module of the application.
  */
+
+var services = angular.module('kodiServices', []);
+
 var app = angular.module('kodiAngularApp', [
     'ngResource',
-    'ngRoute'
+    'ngRoute',
+    'kodiServices'
   ]);
-  app.constant('KODI_URL', 'http://localhost:8080/jsonrpc');
 
   app.config(function ($routeProvider) {
     $routeProvider
