@@ -23,10 +23,10 @@ services.service('KodiWS', ['$q', function($q) {
     }, 5);
   }
 
-  function sendMessage(method) {
+  function sendMessage(method, params) {
     var deferred = $q.defer();
     waitForConnection(function() {
-      ws.send(JSON.stringify({jsonrpc: '2.0', id: 1, method: method}));
+      ws.send(JSON.stringify({jsonrpc: '2.0', id: 1, method: method, params: params}));
       ws.onmessage = function(message) {
         var response = JSON.parse(message.data);
         deferred.resolve(response.result);
