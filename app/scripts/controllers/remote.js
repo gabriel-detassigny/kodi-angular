@@ -6,4 +6,10 @@ app.controller('RemoteCtrl', ['$scope', 'KodiRemote', function ($scope, KodiRemo
     $scope.inputButton = function(action) {
       KodiRemote.input(action);
     };
+    $scope.volumeDownButton = function() {
+      KodiRemote.volumeDown();
+    };
+    $scope.volumeUpButton = function() {
+      KodiRemote.volumeUp();
+    };
   }]);
