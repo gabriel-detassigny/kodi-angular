@@ -1,4 +1,4 @@
-/* global app:true */
+/* global services:true */
 
 'use strict';
 

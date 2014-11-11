@@ -1,3 +1,5 @@
+/* global services:true */
+
 'use strict';
 
 services.service('Movie', ['KodiWS', '$q',
