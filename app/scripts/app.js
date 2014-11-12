@@ -19,6 +19,12 @@ var app = angular.module('kodiAngularApp', [
     'kodiServices'
   ]);
 
+  app.controller('MainCtrl', ['$scope', '$location', function($scope, $location) {
+    $scope.isActive = function(route) {
+      return route === $location.path();
+    };
+  }]);
+
   app.config(function ($routeProvider) {
     $routeProvider
       .when('/remote', {

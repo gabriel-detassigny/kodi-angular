@@ -35,11 +35,11 @@
               </button>
               <a class="navbar-brand" ng-href="#">Kodi</a>
             </div>
-            <div class="collapse navbar-collapse" id="navbar-collapse">
+            <div class="collapse navbar-collapse" id="navbar-collapse" ng-controller="MainCtrl">
               <ul class="nav navbar-nav navbar-right">
-                <li><a ng-href="#/remote">Remote</a></li>
+                <li ng-class="{active:isActive('/remote')}"><a ng-href="#/remote">Remote</a></li>
                 <li><a ng-href="#/tvshows">TV Shows</a></li>
-                <li><a ng-href="#/movies">Movies</a></li>
+                <li ng-class="{active:isActive('/movies')}"><a ng-href="#/movies">Movies</a></li>
                 <li><a ng-href="#/music">Music</a></li>
               </ul>
             </div>
