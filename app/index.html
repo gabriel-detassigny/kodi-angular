@@ -24,13 +24,27 @@
     <!-- Add your site or application content here -->
     <div class="container">
       <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li><a ng-href="#">Remote</a></li>
-          <li><a ng-href="#/tvshows">TV Shows</a></li>
-          <li><a ng-href="#/movies">Movies</a></li>
-          <li><a ng-href="#/music">Music</a></li>
-        </ul>
-        <h3 class="text-muted">Kodi</h3>
+        <div class="navbar navbar-default" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" ng-href="#">Kodi</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+              <ul class="nav navbar-nav navbar-right">
+                <li><a ng-href="#/remote">Remote</a></li>
+                <li><a ng-href="#/tvshows">TV Shows</a></li>
+                <li><a ng-href="#/movies">Movies</a></li>
+                <li><a ng-href="#/music">Music</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div ng-view=""></div>
