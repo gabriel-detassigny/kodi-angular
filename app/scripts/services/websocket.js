@@ -2,8 +2,8 @@
 
 'use strict';
 
-services.service('KodiWS', ['$q', function($q) {
-  var ws = new WebSocket('ws://localhost:9090/jsonrpc');
+services.service('KodiWS', ['$q', 'KODI_URL', function($q, KODI_URL) {
+  var ws = new WebSocket('ws://' + KODI_URL + ':9090/jsonrpc');
 
   ws.onopen = function() {
     console.log('Connected to Kodi Web Socket');
