@@ -13,6 +13,9 @@ services.service('Movie', ['KodiWS', '$q',
         });
         return deferred.promise;
       },
+      play: function(movie) {
+        KodiWS.send('Player.Open', { item: { movieid: movie }});
+      },
     };
     return movie;
   }
