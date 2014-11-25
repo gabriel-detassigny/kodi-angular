@@ -12,7 +12,7 @@
  */
 
 var services = angular.module('kodiServices', []);
-services.constant('KODI_URL', '192.168.0.48');
+services.constant('KODI_URL', '192.168.0.18');
 
 var app = angular.module('kodiAngularApp', [
     'ngResource',

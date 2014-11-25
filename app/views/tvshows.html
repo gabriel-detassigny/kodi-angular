@@ -1,15 +1,19 @@
-<h2>Tv Shows</h2>
+<h2>TV Shows</h2>
 <table class="table table-striped table-hover">
   <thead>
     <tr>
       <th>Title</th>
-      <th>Seasons</th>
+      <th>Story</th>
+      <th>Genre</th>
+      <th>Year</th>
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="tvshow in tvshows">
-      <td>{{ tvshow.name }}</td>
-      <td />
+      <td><strong>{{ tvshow.title }}</strong></td>
+      <td>{{ tvshow.plot }}</td>
+      <td>{{ tvshow.genre.join(', ') }}</td>
+      <td>{{ tvshow.year }}</td>
     </tr>
   </tbody>
 </table>
