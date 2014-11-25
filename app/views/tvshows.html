@@ -9,7 +9,7 @@
   </thead>
   <tbody>
     <tr ng-repeat="tvshow in tvshows">
-      <td><a href="#/tvshows/{{ tvshow.tvshowid }}">{{ tvshow.title }}</a></td>
+      <td><a ng-href="#/tvshows/{{ tvshow.tvshowid }}">{{ tvshow.title }}</a></td>
       <td>{{ tvshow.genre.join(', ') }}</td>
       <td>{{ tvshow.year }}</td>
     </tr>
