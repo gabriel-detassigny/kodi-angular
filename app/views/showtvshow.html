@@ -2,3 +2,18 @@
   <li><a ng-href="#/tvshows">TV Shows</a></li>
   <li class="active">{{ tvshow.title }}</li>
 </ol>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Watched / Total episodes</th>
+    </tr>
+  </thread>
+  <tbody>
+    <tr ng-repeat="season in tvshow.seasons">
+      <td>{{ season.label }}</td>
+      <td>{{ season.watchedepisodes }} / {{ season.episode }}</td>
+    </tr>
+  </tbody>
+</table>
