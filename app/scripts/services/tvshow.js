@@ -15,7 +15,11 @@ services.service('TvShow', ['KodiWS', '$q', function(KodiWS, $q) {
     find: function(tvshowId) {
       var deferred = $q.defer();
       KodiWS.send('VideoLibrary.GetTVShowDetails', { properties: fields, tvshowid: parseInt(tvshowId) }).then(function(data) {
-        deferred.resolve(data.tvshowdetails);
+        tvshow = data.tvshowdetails;
+        KodiWS.send('VideoLibrary.GetSeasons', { properties: ['season', 'episode', 'watchedepisodes'], tvshowid: parseInt(tvshowId) }).then(function(data) {
+          tvshow.seasons = data.seasons;
+          deferred.resolve(tvshow);
+        });
       });
       return deferred.promise;
     }
