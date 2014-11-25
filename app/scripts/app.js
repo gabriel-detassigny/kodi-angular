@@ -36,6 +36,10 @@ var app = angular.module('kodiAngularApp', [
         templateUrl: 'views/tvshows.html',
         controller: 'TvShowsCtrl'
       })
+      .when('/tvshows/:tvshowId', {
+        templateUrl: 'views/showtvshow.html',
+        controller: 'TvShowViewCtrl'
+      })
       .when('/movies', {
         templateUrl: 'views/movies.html',
         controller: 'MoviesCtrl'

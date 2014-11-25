@@ -3,15 +3,13 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Story</th>
       <th>Genre</th>
       <th>Year</th>
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="tvshow in tvshows">
-      <td><strong>{{ tvshow.title }}</strong></td>
-      <td>{{ tvshow.plot }}</td>
+      <td><a href="#/tvshows/{{ tvshow.tvshowid }}">{{ tvshow.title }}</a></td>
       <td>{{ tvshow.genre.join(', ') }}</td>
       <td>{{ tvshow.year }}</td>
     </tr>
