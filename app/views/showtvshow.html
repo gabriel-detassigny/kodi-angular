@@ -12,7 +12,7 @@
   </thread>
   <tbody>
     <tr ng-repeat="season in tvshow.seasons">
-      <td>{{ season.label }}</td>
+      <td><a ng-href="#/tvshows/{{ tvshow.tvshowid }}/seasons/{{ season.season }}">{{ season.label }}</a></td>
       <td>{{ season.watchedepisodes }} / {{ season.episode }}</td>
     </tr>
   </tbody>

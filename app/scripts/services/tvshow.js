@@ -22,6 +22,18 @@ services.service('TvShow', ['KodiWS', '$q', function(KodiWS, $q) {
         });
       });
       return deferred.promise;
+    },
+    findSeason: function(tvshowId, season) {
+      var deferred = $q.defer();
+      var result = { tvshowId: tvshowId, season: season };
+      KodiWS.send('VideoLibrary.GetTVShowDetails', { properties: ['title'], tvshowid: parseInt(tvshowId) }).then(function(data) {
+        result.tvshow = data.tvshowdetails.title;
+        KodiWS.send('VideoLibrary.GetEpisodes', { properties: ['episode', 'rating', 'playcount', 'firstaired'], tvshowid: parseInt(tvshowId), season: parseInt(season) }).then(function(data) {
+          result.episodes = data.episodes;
+          deferred.resolve(result);
+        });
+      });
+      return deferred.promise;
     }
   };
   return tvshow;
