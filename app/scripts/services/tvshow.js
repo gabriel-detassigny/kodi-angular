@@ -34,6 +34,9 @@ services.service('TvShow', ['KodiWS', '$q', function(KodiWS, $q) {
         });
       });
       return deferred.promise;
+    },
+    playEpisode: function(episodeId) {
+      KodiWS.send('Player.Open', { item: { episodeid: episodeId }});
     }
   };
   return tvshow;

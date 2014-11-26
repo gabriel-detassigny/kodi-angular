@@ -6,4 +6,7 @@ app.controller('SeasonViewCtrl', ['$scope', '$routeParams', 'TvShow', function($
   TvShow.findSeason($routeParams.tvshowId, $routeParams.season).then(function(data) {
     $scope.season = data;
   });
+  $scope.play = function(episodeId) {
+    TvShow.playEpisode(episodeId);
+  };
 }]);
