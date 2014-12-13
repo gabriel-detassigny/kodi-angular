@@ -2,8 +2,8 @@
 
 'use strict';
 
-services.service('KodiRemote', ['KodiWS',
-  function(KodiWS) {
+services.service('KodiRemote', ['KodiWS', '$q',
+  function(KodiWS, $q) {
 
     var remote = {
       input: function(action) {
@@ -24,6 +24,21 @@ services.service('KodiRemote', ['KodiWS',
               KodiWS.send('Application.SetVolume', {volume: (data.volume + 5)});
             }
         });
+      },
+      activePlayer: function() {
+        var deferred = $q.defer();
+        KodiWS.send('Player.GetActivePlayers', {}).then(function(data) {
+          var result = null;
+          for (var i = 0; i < data.length ; i++)
+            {
+              if (data[i].type != 'picture')
+                {
+                  result = data[i];
+                }
+            }
+          deferred.resolve(result);
+        });
+        return deferred.promise;
       }
     };
     return remote;

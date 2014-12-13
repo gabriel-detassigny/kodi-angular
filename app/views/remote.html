@@ -16,3 +16,21 @@
     <button type="button" ng-click="volumeUpButton()" class="remote-btn btn btn-default"><i class="fa fa-volume-up"/></button>
   </div>
 </div>
+<div ng-if="player != null" class="player">
+  <p class="lead">
+    <i ng-if="player.type == 'audio'" class="fa fa-music"/>
+    <i ng-if="player.type == 'video'" class="fa fa-film"/>
+    Led Zeppelin - Kashmir
+  </p>
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 51%;">
+      4:16 / 8:28
+    </div>
+  </div>
+  <button type="button" class="btn btn-default"><i class="fa fa-fast-backward"/></button>
+  <button type="button" class="btn btn-default"><i class="fa fa-step-backward"/></button>
+  <button type="button" class="btn btn-default"><i class="fa fa-stop"/></button>
+  <button type="button" class="btn btn-default"><i class="fa fa-play"/></button>
+  <button type="button" class="btn btn-default"><i class="fa fa-step-forward"/></button>
+  <button type="button" class="btn btn-default"><i class="fa fa-fast-forward"/></button>
+</div>

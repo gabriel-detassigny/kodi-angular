@@ -12,4 +12,7 @@ app.controller('RemoteCtrl', ['$scope', 'KodiRemote', function ($scope, KodiRemo
     $scope.volumeUpButton = function() {
       KodiRemote.volumeUp();
     };
+    KodiRemote.activePlayer().then(function(player) {
+      $scope.player = player;
+    });
   }]);
