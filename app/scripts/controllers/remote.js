@@ -25,5 +25,9 @@ app.controller('RemoteCtrl', ['$scope', '$interval', 'KodiRemote', 'KodiPlayer',
       });
     }
 
+    $scope.playPauseButton = function(playerId) {
+      KodiPlayer.playPause(playerId);
+    }
+
     $interval( function() { $scope.playerInterval(); }, 1000);
 }]);

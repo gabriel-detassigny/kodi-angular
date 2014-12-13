@@ -29,7 +29,7 @@
   </div>
   <button type="button" class="btn btn-default"><i class="fa fa-fast-backward"/></button>
   <button type="button" class="btn btn-default"><i class="fa fa-step-backward"/></button>
-  <button type="button" class="btn btn-default">
+  <button type="button" class="btn btn-default" ng-click="playPauseButton(player.playerid)">
     <i ng-if="playedItem.paused" class="fa fa-play"/>
     <i ng-if="playedItem.paused == false" class="fa fa-pause"/>
   </button>

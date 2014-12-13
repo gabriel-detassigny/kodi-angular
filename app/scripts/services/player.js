@@ -62,6 +62,9 @@ services.service('KodiPlayer', ['KodiWS', '$q',
           });
         });
         return deferred.promise;
+      },
+      playPause: function(playerId) {
+        KodiWS.send('Player.PlayPause', { playerid: playerId });
       }
     };
 
