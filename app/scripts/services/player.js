@@ -37,20 +37,24 @@ services.service('KodiPlayer', ['KodiWS', '$q',
         });
         return deferred.promise;
       },
-      get: function(player) {
+      get: function(playerId) {
         var deferred = $q.defer();
-        KodiWS.send('Player.getItem', { playerid: player.playerid, properties: ['title', 'artist'] }).then(function(data) {
+        KodiWS.send('Player.getItem', { playerid: playerId, properties: ['title', 'artist'] }).then(function(data) {
           var item = {
             label: data.item.label,
             time: null,
             totalTime: null,
-            percentage: null
+            percentage: null,
+            paused: false
           };
           if (data.item.type == 'song')
           {
             item.label = data.item.title + ' - ' + data.item.artist[0];
           }
-          KodiWS.send('Player.getProperties', { playerid: player.playerid, properties: ['time', 'totaltime', 'percentage'] }).then(function(data) {
+          KodiWS.send('Player.getProperties', { playerid: playerId, properties: ['time', 'totaltime', 'percentage', 'speed'] }).then(function(data) {
+            if (data.speed == 0) {
+              item.paused = true;
+            }
             item.percentage = Math.ceil(data.percentage);
             item.totalTime = time_format(data.totaltime);
             item.time = time_format(data.time);

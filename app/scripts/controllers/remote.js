@@ -18,12 +18,12 @@ app.controller('RemoteCtrl', ['$scope', '$interval', 'KodiRemote', 'KodiPlayer',
         $scope.player = player;
         if (player != null)
         {
-          KodiPlayer.get(player).then(function(data) {
+          KodiPlayer.get(player.playerid).then(function(data) {
             $scope.playedItem = data;
           });
         }
       });
     }
-    
+
     $interval( function() { $scope.playerInterval(); }, 1000);
 }]);
