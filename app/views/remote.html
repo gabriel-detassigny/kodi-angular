@@ -20,11 +20,11 @@
   <p class="lead">
     <i ng-if="player.type == 'audio'" class="fa fa-music"/>
     <i ng-if="player.type == 'video'" class="fa fa-film"/>
-    Led Zeppelin - Kashmir
+    {{ playedItem.label }}
   </p>
   <div class="progress">
-    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 51%;">
-      4:16 / 8:28
+    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{ playedItem.percentage }}%;">
+      {{ playedItem.time }} / {{ playedItem.totalTime }}
     </div>
   </div>
   <button type="button" class="btn btn-default"><i class="fa fa-fast-backward"/></button>

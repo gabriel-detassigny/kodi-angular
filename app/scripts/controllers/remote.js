@@ -14,5 +14,11 @@ app.controller('RemoteCtrl', ['$scope', 'KodiRemote', 'KodiPlayer', function ($s
     };
     KodiPlayer.active().then(function(player) {
       $scope.player = player;
+      if (player != null)
+        {
+          KodiPlayer.get(player).then(function(data) {
+            $scope.playedItem = data;
+          });
+        }
     });
 }]);
