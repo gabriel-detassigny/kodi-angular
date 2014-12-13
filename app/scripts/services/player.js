@@ -23,7 +23,7 @@ services.service('KodiPlayer', ['KodiWS', '$q',
       },
       get: function(player) {
         var deferred = $q.defer();
-        KodiWS.send('Player.getItem', { playerid: player.playerid, properties: ['title', 'artist', 'duration', 'streamdetails'] }).then(function(data) {
+        KodiWS.send('Player.getItem', { playerid: player.playerid, properties: ['title', 'artist'] }).then(function(data) {
           var item = {
             label: data.item.label,
             time: null,
