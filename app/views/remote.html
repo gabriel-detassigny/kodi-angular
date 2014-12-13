@@ -27,13 +27,13 @@
       {{ playedItem.time }} / {{ playedItem.totalTime }}
     </div>
   </div>
-  <button type="button" class="btn btn-default"><i class="fa fa-fast-backward"/></button>
-  <button type="button" class="btn btn-default"><i class="fa fa-step-backward"/></button>
+  <button type="button" class="btn btn-default" ng-click="previousButton(player.playerid)"><i class="fa fa-fast-backward"/></button>
+  <button type="button" class="btn btn-default"><i class="fa fa-backward"/></button>
   <button type="button" class="btn btn-default" ng-click="playPauseButton(player.playerid)">
     <i ng-if="playedItem.paused" class="fa fa-play"/>
     <i ng-if="playedItem.paused == false" class="fa fa-pause"/>
   </button>
   <button type="button" class="btn btn-default" ng-click="stopButton(player.playerid)"><i class="fa fa-stop"/></button>
-  <button type="button" class="btn btn-default"><i class="fa fa-step-forward"/></button>
-  <button type="button" class="btn btn-default"><i class="fa fa-fast-forward"/></button>
+  <button type="button" class="btn btn-default"><i class="fa fa-forward"/></button>
+  <button type="button" class="btn btn-default" ng-click="nextButton(player.playerid)"><i class="fa fa-fast-forward"/></button>
 </div>

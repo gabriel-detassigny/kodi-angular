@@ -68,6 +68,9 @@ services.service('KodiPlayer', ['KodiWS', '$q',
       },
       stop: function(playerId) {
         KodiWS.send('Player.Stop', { playerid: playerId });
+      },
+      change: function(playerId, state) {
+        KodiWS.send('Player.GoTo', { playerid: playerId, to: state });
       }
     };
 

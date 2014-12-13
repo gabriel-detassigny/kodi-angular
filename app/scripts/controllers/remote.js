@@ -33,5 +33,13 @@ app.controller('RemoteCtrl', ['$scope', '$interval', 'KodiRemote', 'KodiPlayer',
       KodiPlayer.stop(playerId);
     }
 
+    $scope.previousButton = function(playerId) {
+      KodiPlayer.change(playerId, "previous");
+    }
+
+    $scope.nextButton = function(playerId) {
+      KodiPlayer.change(playerId, "next");
+    }
+
     $interval( function() { $scope.playerInterval(); }, 1000);
 }]);
