@@ -21,6 +21,8 @@ services.service('KodiPlayer', ['KodiWS', '$q',
       return string;
     }
 
+    var speeds = [-32, -16, -8, -4, -2, -1, 1, 2, 4, 8, 16, 32];
+
     var hash = {
       active: function() {
         var deferred = $q.defer();
@@ -45,16 +47,15 @@ services.service('KodiPlayer', ['KodiWS', '$q',
             time: null,
             totalTime: null,
             percentage: null,
-            paused: false
+            paused: false,
+            speed: 0
           };
           if (data.item.type == 'song')
           {
             item.label = data.item.title + ' - ' + data.item.artist[0];
           }
           KodiWS.send('Player.getProperties', { playerid: playerId, properties: ['time', 'totaltime', 'percentage', 'speed'] }).then(function(data) {
-            if (data.speed == 0) {
-              item.paused = true;
-            }
+            item.speed = data.speed;
             item.percentage = Math.ceil(data.percentage);
             item.totalTime = time_format(data.totaltime);
             item.time = time_format(data.time);
@@ -69,8 +70,20 @@ services.service('KodiPlayer', ['KodiWS', '$q',
       stop: function(playerId) {
         KodiWS.send('Player.Stop', { playerid: playerId });
       },
-      change: function(playerId, state) {
+      changeItem: function(playerId, state) {
         KodiWS.send('Player.GoTo', { playerid: playerId, to: state });
+      },
+      changeSpeed: function(playerId, speed, forward) {
+        if (speed == 0) {
+          speed = 1;
+        }
+        var i = speeds.indexOf(speed);
+        if (i > 0 && !forward) {
+          KodiWS.send('Player.SetSpeed', { playerid: playerId, speed: speeds[i - 1] });
+        }
+        else if (i + 1 < speeds.length && forward) {
+          KodiWS.send('Player.SetSpeed', { playerid: playerId, speed: speeds[i + 1] });
+        }
       }
     };
 

@@ -28,12 +28,12 @@
     </div>
   </div>
   <button type="button" class="btn btn-default" ng-click="previousButton(player.playerid)"><i class="fa fa-fast-backward"/></button>
-  <button type="button" class="btn btn-default"><i class="fa fa-backward"/></button>
+  <button type="button" class="btn btn-default" ng-click="backwardButton(player.playerid, playedItem.speed)"><i class="fa fa-backward"/></button>
   <button type="button" class="btn btn-default" ng-click="playPauseButton(player.playerid)">
-    <i ng-if="playedItem.paused" class="fa fa-play"/>
-    <i ng-if="playedItem.paused == false" class="fa fa-pause"/>
+    <i ng-if="playedItem.speed != 1" class="fa fa-play"/>
+    <i ng-if="playedItem.speed == 1" class="fa fa-pause"/>
   </button>
   <button type="button" class="btn btn-default" ng-click="stopButton(player.playerid)"><i class="fa fa-stop"/></button>
-  <button type="button" class="btn btn-default"><i class="fa fa-forward"/></button>
+  <button type="button" class="btn btn-default" ng-click="forwardButton(player.playerid, playedItem.speed)"><i class="fa fa-forward"/></button>
   <button type="button" class="btn btn-default" ng-click="nextButton(player.playerid)"><i class="fa fa-fast-forward"/></button>
 </div>
