@@ -65,6 +65,9 @@ services.service('KodiPlayer', ['KodiWS', '$q',
       },
       playPause: function(playerId) {
         KodiWS.send('Player.PlayPause', { playerid: playerId });
+      },
+      stop: function(playerId) {
+        KodiWS.send('Player.Stop', { playerid: playerId });
       }
     };
 
