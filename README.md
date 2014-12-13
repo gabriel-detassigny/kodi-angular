@@ -33,6 +33,7 @@ You also need to change the Constant named *KODI_URL* in app/scripts/app.js to m
 For now, this project integrates :
 
 - Remote control (move, back, home button...)
+- Player actions (play, pause, stop, forward, backward...)
 - Volume
 - Movies
 - TV Shows
