@@ -6,4 +6,10 @@
       <th>Genre</th>
     </tr>
   </thead>
+  <tbody>
+    <tr ng-repeat="artist in artists">
+      <td>{{ artist.artist }}</td>
+      <td>{{ artist.genre.join(', ') }}</td>
+    </tr>
+  </tbody>
 </table>
