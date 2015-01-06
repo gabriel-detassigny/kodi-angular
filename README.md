@@ -6,7 +6,15 @@ There is already plenty of web interfaces available for Kodi, I just wanted to m
 
 It uses [Bootstrap](http://getbootstrap.com/) for the design, therefore it is fully responsive.
 
+### Remote Control and Player
+
+Here is a preview of what the remote control interface looks like.
+
 ![Screenshot](wiki/images/remote.png "Remote")
+
+### Libraries
+
+For now, there are basic tables to see and play movies or tv shows.
 
 ![Screenshot](wiki/images/tvshows.png "TV Shows")
 
