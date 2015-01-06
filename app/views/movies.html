@@ -3,18 +3,18 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Story</th>
       <th>Genre</th>
       <th>Year</th>
     </tr>
   </thead>
-  <tr ng-repeat="movie in movies">
-    <td>
-      <button type="button" class="btn btn-xs btn-default" ng-click="play(movie.movieid)"><i class="fa fa-play"/></button>
-      <strong>{{ movie.originaltitle }}</strong>
-    </td>
-    <td>{{ movie.tagline }}</td>
-    <td>{{ movie.genre.join(', ') }}</td>
-    <td>{{ movie.year }}</td>
-  </tr>
+  <tbody>
+    <tr ng-repeat="movie in movies">
+      <td>
+        <button type="button" class="btn btn-xs btn-default" ng-click="play(movie.movieid)"><i class="fa fa-play"/></button>
+        <strong>{{ movie.originaltitle }}</strong>
+      </td>
+      <td>{{ movie.genre.join(', ') }}</td>
+      <td>{{ movie.year }}</td>
+    </tr>
+  </tbody>
 </table>
