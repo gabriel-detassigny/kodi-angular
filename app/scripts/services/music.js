@@ -11,6 +11,17 @@ services.service('Music', ['KodiWS', '$q', function(KodiWS, $q) {
       });
       return deferred.promise;
     },
+    findArtist: function(artistId) {
+      var deferred = $q.defer();
+      KodiWS.send('AudioLibrary.GetAlbums', { filter: { artistid: parseInt(artistId) }, properties: ['artist', 'year']}).then(function(data) {
+        var artist = { artistid: artistId };
+        artist.label = data.albums[0].artist[0];
+        artist.albums = data.albums;
+        console.log(artist);
+        deferred.resolve(artist);
+      });
+      return deferred.promise;
+    },
   };
   return music;
 }]);

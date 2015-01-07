@@ -52,6 +52,10 @@ var app = angular.module('kodiAngularApp', [
         templateUrl: 'views/music.html',
         controller: 'MusicCtrl'
       })
+      .when('/music/:artistId', {
+        templateUrl: 'views/showartist.html',
+        controller: 'ArtistViewCtrl'
+      })
       .otherwise({
         redirectTo: '/remote'
       });

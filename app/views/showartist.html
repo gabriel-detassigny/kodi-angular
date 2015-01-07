@@ -1,0 +1,19 @@
+<ol class="breadcrumb">
+  <li><a ng-href="#/music">Artists</a></li>
+  <li class="active">{{ artist.label }}</li>
+</ol>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Album</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="album in artist.albums">
+      <td>{{ album.label }}</td>
+      <td>{{ album.year }}</td>
+    </tr>
+  </tbody>
+</table>
