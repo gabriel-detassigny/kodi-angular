@@ -2,25 +2,32 @@
 
 'use strict';
 
-services.service('KodiWS', ['$q', 'KODI_URL', function($q, KODI_URL) {
+services.service('KodiWS', ['$q', 'KODI_URL', 'SOCKET_TIMEOUT', function($q, KODI_URL, SOCKET_TIMEOUT) {
   var ws = new WebSocket('ws://' + KODI_URL + ':9090/jsonrpc');
 
   ws.onopen = function() {
     console.log('Connected to Kodi Web Socket');
   };
 
-  function waitForConnection(callback) {
+  function waitForConnection(callback, attempt) {
     setTimeout(function() {
       if (ws.readyState !== WebSocket.OPEN)
         {
-          console.log('Wait for connection...');
-          waitForConnection(callback);
+          if (attempt > 0)
+          {
+            console.log('Wait for connection...');
+            waitForConnection(callback, attempt - 1);
+          }
+          else
+          {
+            console.log('Error : Could not connect to Kodi!');
+          }
         }
       else
         {
           callback();
         }
-    }, 5);
+    }, SOCKET_TIMEOUT);
   }
 
   function sendMessage(method, params) {
@@ -31,7 +38,7 @@ services.service('KodiWS', ['$q', 'KODI_URL', function($q, KODI_URL) {
         var response = JSON.parse(message.data);
         deferred.resolve(response.result);
       };
-    });
+    }, 10);
     return deferred.promise;
   }
 
