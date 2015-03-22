@@ -23,7 +23,8 @@ var app = angular.module('kodiAngularApp', [
 
   app.controller('MainCtrl', ['$scope', '$location', function($scope, $location) {
     $scope.isActive = function(route) {
-      return route === $location.path();
+      var path = $location.path().substring(0, route.length);
+      return route === path;
     };
   }]);
 
