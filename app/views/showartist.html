@@ -12,7 +12,7 @@
   </thead>
   <tbody>
     <tr ng-repeat="album in artist.albums">
-      <td>{{ album.label }}</td>
+      <td><a ng-href="#/music/{{ artist.artistid }}/albums/{{ album.albumid }}">{{ album.label }}</a></td>
       <td>{{ album.year }}</td>
     </tr>
   </tbody>

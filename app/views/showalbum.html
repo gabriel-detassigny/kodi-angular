@@ -1,0 +1,24 @@
+<ol class="breadcrumb">
+  <li><a ng-href="#/music">Music</a></li>
+  <li><a ng-href="#/music/{{ album.artistId }}">{{ album.artist }}</a></li>
+  <li class="active">{{ album.album }}</li>
+</ol>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Track</th>
+      <th>Song</th>
+      <th>Duration</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="song in album.songs">
+      <td>
+        {{ song.track }}
+      </td>
+      <td>{{ song.title }}</td>
+      <td>{{ song.duration }}</td>
+    </tr>
+  </tbody>
+</table>

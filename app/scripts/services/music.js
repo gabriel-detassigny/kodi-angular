@@ -17,8 +17,21 @@ services.service('Music', ['KodiWS', '$q', function(KodiWS, $q) {
         var artist = { artistid: artistId };
         artist.label = data.albums[0].artist[0];
         artist.albums = data.albums;
-        console.log(artist);
         deferred.resolve(artist);
+      });
+      return deferred.promise;
+    },
+    findAlbum: function(artistId, albumId) {
+      var deferred = $q.defer();
+      var result = { artistId: artistId, albumId: albumId };
+      KodiWS.send('AudioLibrary.GetAlbumDetails', { albumid: parseInt(albumId), properties: ['title', 'artist'] }).then(function(data) {
+        result.album = data.albumdetails.title;
+        result.artist = data.albumdetails.artist[0];
+        KodiWS.send('AudioLibrary.GetSongs', { properties: ['title', 'track', 'duration'], sort: { method: 'track' }, filter: { albumid: parseInt(albumId) }}).then(function(data) {
+          result.songs = data.songs;
+          console.log(result);
+          deferred.resolve(result);
+        });
       });
       return deferred.promise;
     },
