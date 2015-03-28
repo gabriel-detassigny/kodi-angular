@@ -33,7 +33,8 @@ And allow control for other application from both inside and outside the system.
 
 You also need to install __Bower__ to install packages dependencies, and __Grunt__ to run your application with the *serve* task.
 
-You also need to change the Constant named *KODI_URL* in app/scripts/app.js to match your Kodi IP address.
+To connect the Angular app with Kodi, you need to rename the file _app/scripts/config.js.example_ to _app/scripts/config.js_
+Then, change the value of the constant named *KODI_URL* to the IP / domain of Kodi.
 
 
 ## Available features
@@ -45,3 +46,4 @@ For now, this project integrates :
 - Volume
 - Movies
 - TV Shows
+- Music
