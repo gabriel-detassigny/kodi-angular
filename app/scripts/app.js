@@ -15,6 +15,7 @@ var services = angular.module('kodiServices', []);
 var app = angular.module('kodiAngularApp', [
     'ngResource',
     'ngRoute',
+    'infinite-scroll',
     'kodiServices',
     'kodiConfig'
   ]);
