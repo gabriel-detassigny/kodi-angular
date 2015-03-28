@@ -12,7 +12,7 @@
  */
 
 var services = angular.module('kodiServices', []);
-services.constant('KODI_URL', '87.198.40.124');
+services.constant('KODI_URL', '87.198.40.211');
 services.constant('SOCKET_TIMEOUT', 200);
 
 var app = angular.module('kodiAngularApp', [
