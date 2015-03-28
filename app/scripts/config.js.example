@@ -1,0 +1,6 @@
+'use strict';
+
+var config = angular.module('kodiConfig', [])
+  .constant('KODI_URL', '87.198.40.18')
+  .constant('SOCKET_TIMEOUT', 200)
+;
