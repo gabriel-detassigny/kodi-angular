@@ -4,9 +4,9 @@
 
 services.service('Music', ['KodiWS', '$q', function(KodiWS, $q) {
   var music = {
-    artists: function(last) {
+    artists: function(artistNum, size) {
       var deferred = $q.defer();
-      KodiWS.send('AudioLibrary.GetArtists', { properties: ['genre'], sort: { method: 'artist' }, limits: { start: last - 25, end: last }}).then(function(data) {
+      KodiWS.send('AudioLibrary.GetArtists', { properties: ['genre'], sort: { method: 'artist' }, limits: { start: artistNum, end: artistNum + size }}).then(function(data) {
         deferred.resolve(data);
       });
       return deferred.promise;
