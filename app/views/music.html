@@ -6,17 +6,15 @@
       <th>Genre</th>
     </tr>
   </thead>
-  <tbody>
-    <div infinite-scroll="nextPage()" infinite-scroll-disabled="waiting" infinite-scroll-distance="1">
-      <tr ng-repeat="artist in artists">
-        <td><a ng-href="#/music/{{ artist.artistid }}">{{ artist.artist }}</a></td>
-        <td>{{ artist.genre.join(', ') }}</td>
-      </tr>
+  <tbody infinite-scroll="nextPage()" infinite-scroll-disabled="waiting">
+    <tr ng-repeat="artist in artists">
+      <td><a ng-href="#/music/{{ artist.artistid }}">{{ artist.artist }}</a></td>
+      <td>{{ artist.genre.join(', ') }}</td>
+    </tr>
 
-      <tr ng-show="waiting">
-        <td><i class="fa fa-spin fa-spinner"></td>
-        <td>Loading artists...</td>
-      </tr>
-    </div>
+    <tr ng-show="waiting">
+      <td><i class="fa fa-spin fa-spinner"></td>
+      <td>Loading artists...</td>
+    </tr>
   </tbody>
 </table>
