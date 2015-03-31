@@ -2,8 +2,8 @@
 
 'use strict';
 
-app.controller('MusicCtrl', ['$scope', 'Music', function($scope, Music) {
-  var last = 25;
+app.controller('MusicCtrl', ['$scope', 'Music', 'PER_PAGE', function($scope, Music, PER_PAGE) {
+  var last = PER_PAGE;
   var finished = false;
 
   $scope.waiting = false;
@@ -20,7 +20,7 @@ app.controller('MusicCtrl', ['$scope', 'Music', function($scope, Music) {
         $scope.artists.push(data.artists[i]);
       }
       $scope.waiting = false;
-      last += 25;
+      last += PER_PAGE;
       if (last >= data.limits.total) {
         finished = true;
       }
