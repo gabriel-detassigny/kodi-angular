@@ -7,7 +7,7 @@ services.service('TvShow', ['KodiWS', '$q', function(KodiWS, $q) {
   var tvshow = {
     all: function() {
       var deferred = $q.defer();
-      KodiWS.send('VideoLibrary.GetTVShows', { properties: fields }).then(function(data) {
+      KodiWS.send('VideoLibrary.GetTVShows', { properties: fields, sort: { method: 'title' }}).then(function(data) {
         deferred.resolve(data.tvshows);
       });
       return deferred.promise;
