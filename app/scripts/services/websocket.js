@@ -2,7 +2,7 @@
 
 'use strict';
 
-services.service('KodiWS', ['$q', 'KODI_URL', 'SOCKET_TIMEOUT', function($q, KODI_URL, SOCKET_TIMEOUT) {
+services.service('KodiWS', ['$q', '$window', 'KODI_URL', 'SOCKET_TIMEOUT', function($q, $window, KODI_URL, SOCKET_TIMEOUT) {
   var ws = new WebSocket('ws://' + KODI_URL + ':9090/jsonrpc');
 
   ws.onopen = function() {
@@ -21,6 +21,7 @@ services.service('KodiWS', ['$q', 'KODI_URL', 'SOCKET_TIMEOUT', function($q, KOD
           else
           {
             console.log('Error : Could not connect to Kodi!');
+            $window.location.href = "#error";
           }
         }
       else

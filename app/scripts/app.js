@@ -61,6 +61,10 @@ var app = angular.module('kodiAngularApp', [
         templateUrl: 'views/showalbum.html',
         controller: 'AlbumViewCtrl'
       })
+      .when('/error', {
+        templateUrl: 'views/error.html',
+        controller: 'ErrorCtrl'
+      })
       .otherwise({
         redirectTo: '/remote'
       });
