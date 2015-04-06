@@ -7,8 +7,8 @@ services.service('Movie', ['KodiWS', '$q',
     var movie = {
       all: function() {
         var deferred = $q.defer();
-        var fields = ['originaltitle', 'genre', 'year'];
-        KodiWS.send('VideoLibrary.GetMovies', {properties: fields}).then(function(data) {
+        var fields = ['title', 'genre', 'year'];
+        KodiWS.send('VideoLibrary.GetMovies', { properties: fields, sort: { method: 'title' }}).then(function(data) {
           deferred.resolve(data.movies);
         });
         return deferred.promise;

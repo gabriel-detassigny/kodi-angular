@@ -11,7 +11,7 @@
     <tr ng-repeat="movie in movies">
       <td>
         <button type="button" class="btn btn-xs btn-default" ng-click="play(movie.movieid)"><i class="fa fa-play"/></button>
-        <strong>{{ movie.originaltitle }}</strong>
+        <strong>{{ movie.title }}</strong>
       </td>
       <td>{{ movie.genre.join(', ') }}</td>
       <td>{{ movie.year }}</td>
