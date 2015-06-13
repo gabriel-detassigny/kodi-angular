@@ -39,17 +39,24 @@ services.service('Music', ['KodiWS', '$q', function(KodiWS, $q) {
       });
       return deferred.promise;
     },
-    playSong: function(songId, albumId) {
+    playSong: function(albumId, songId) {
       KodiWS.send('Playlist.Clear', { playlistid: 1 }).then(function() {
         KodiWS.send('Playlist.Add', { playlistid: 1, item: { albumid: parseInt(albumId) }}).then(function() {
-          KodiWS.send('Playlist.GetItems', { playlistid: 1, properties: ['track'] }).then(function(data) {
-            var items = data.items;
-            for (var pos = 0; pos < items.length ; pos++) {
-              if (items[pos].id == songId) {
-                KodiWS.send('Player.Open', { item: { playlistid: 1, position: pos }});
-              }
-            }
-          });
+
+          // If there is a songId, seek it and play it. Otherwise, play the whole album.
+          if (songId !== null) {
+            KodiWS.send('Playlist.GetItems', { playlistid: 1, properties: ['track'] }).then(function(data) {
+              var items = data.items;
+                for (var pos = 0; pos < items.length ; pos++) {
+                  if (items[pos].id == songId) {
+                    KodiWS.send('Player.Open', { item: { playlistid: 1, position: pos }});
+                  }
+                }
+            });
+          }
+          else {
+            KodiWS.send('Player.Open', { item: { playlistid: 1 }});
+          }
         });
       });
     },

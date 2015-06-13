@@ -6,4 +6,7 @@ app.controller('ArtistViewCtrl', ['$scope', '$routeParams', 'Music', function($s
   Music.findArtist($routeParams.artistId).then(function(data) {
     $scope.artist = data;
   });
+  $scope.play = function(albumId) {
+    Music.playSong(albumId, null);
+  }
 }]);

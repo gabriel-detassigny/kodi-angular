@@ -12,7 +12,10 @@
   </thead>
   <tbody>
     <tr ng-repeat="album in artist.albums">
-      <td><a ng-href="#/music/{{ artist.artistid }}/albums/{{ album.albumid }}">{{ album.label }}</a></td>
+      <td>
+        <button type="button" class="btn btn-xs btn-default" ng-click="play(album.albumid)"><i class="fa fa-play"/></button>
+        <a ng-href="#/music/{{ artist.artistid }}/albums/{{ album.albumid }}">{{ album.label }}</a>
+      </td>
       <td>{{ album.year }}</td>
     </tr>
   </tbody>
