@@ -2,11 +2,17 @@
 
 'use strict';
 
-services.service('KodiWS', ['$q', '$window', 'KODI_URL', 'SOCKET_TIMEOUT', function($q, $window, KODI_URL, SOCKET_TIMEOUT) {
+services.service('KodiWS', ['$q', '$window', 'KODI_URL', 'SOCKET_TIMEOUT', 'DEBUG', function($q, $window, KODI_URL, SOCKET_TIMEOUT, DEBUG) {
   var ws = new WebSocket('ws://' + KODI_URL + ':9090/jsonrpc');
 
+  function debugLog(message) {
+    if (DEBUG) {
+      console.log(message);
+    }
+  }
+
   ws.onopen = function() {
-    console.log('Connected to Kodi Web Socket');
+    debugLog('Connected to Kodi Web Socket');
   };
 
   function waitForConnection(callback, attempt) {
@@ -15,12 +21,12 @@ services.service('KodiWS', ['$q', '$window', 'KODI_URL', 'SOCKET_TIMEOUT', funct
         {
           if (attempt > 0)
           {
-            console.log('Wait for connection...');
+            debugLog('Wait for connection...');
             waitForConnection(callback, attempt - 1);
           }
           else
           {
-            console.log('Error : Could not connect to Kodi!');
+            debugLog('Error : Could not connect to Kodi!');
             $window.location.href = '#error';
           }
         }
@@ -39,7 +45,7 @@ services.service('KodiWS', ['$q', '$window', 'KODI_URL', 'SOCKET_TIMEOUT', funct
         var response = JSON.parse(message.data);
         if (response.error !== undefined) {
           var error = response.error;
-          console.log(error.data.method + ' : ' + error.message);
+          debugLog(error.data.method + ' : ' + error.message);
         }
 
         deferred.resolve(response.result);
