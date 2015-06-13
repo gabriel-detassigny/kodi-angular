@@ -4,6 +4,14 @@
 
 services.service('Music', ['KodiWS', '$q', function(KodiWS, $q) {
   var music = {
+
+    /**
+     * Return a page of artists from Kodi
+     *
+     * @param integer artistNum : the artist number (e.g. 26 for the 2nd page if we take 25 per page)
+     * @param integer size : the maximum number of artists we want for this page
+     * @return a deferred callback with data in parameter
+     */
     artists: function(artistNum, size) {
       var deferred = $q.defer();
       KodiWS.send('AudioLibrary.GetArtists', { properties: ['genre'], sort: { method: 'artist' }, limits: { start: artistNum, end: artistNum + size }}).then(function(data) {
@@ -11,6 +19,13 @@ services.service('Music', ['KodiWS', '$q', function(KodiWS, $q) {
       });
       return deferred.promise;
     },
+
+    /**
+     * Get information from Kodi about a specific artist
+     *
+     * @param integer artistId : the ID of the artist
+     * @return a deferred callback with the artist in parameter
+     */
     findArtist: function(artistId) {
       var deferred = $q.defer();
       KodiWS.send('AudioLibrary.GetAlbums', { filter: { artistid: parseInt(artistId) }, properties: ['artist', 'year']}).then(function(data) {
@@ -21,6 +36,14 @@ services.service('Music', ['KodiWS', '$q', function(KodiWS, $q) {
       });
       return deferred.promise;
     },
+
+    /**
+     * Get information from Kodi about a specific album
+     *
+     * @param integer artistId : the ID of the artist
+     * @param integer albumId : the ID of the album
+     * @return a deferred callback with data in parameter
+     */
     findAlbum: function(artistId, albumId) {
       var deferred = $q.defer();
       var result = { artistId: artistId, albumId: albumId };
@@ -39,6 +62,14 @@ services.service('Music', ['KodiWS', '$q', function(KodiWS, $q) {
       });
       return deferred.promise;
     },
+
+    /**
+     * Play an entire album or a specific song on Kodi
+     *
+     * @param integer albumId : the ID of the album
+     * @param integer songId : the ID of the song to play (null to play entire album)
+     * @return void
+     */
     playSong: function(albumId, songId) {
       KodiWS.send('Playlist.Clear', { playlistid: 1 }).then(function() {
         KodiWS.send('Playlist.Add', { playlistid: 1, item: { albumid: parseInt(albumId) }}).then(function() {

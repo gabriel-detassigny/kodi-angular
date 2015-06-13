@@ -5,6 +5,12 @@
 services.service('Movie', ['KodiWS', '$q',
   function(KodiWS, $q) {
     var movie = {
+
+      /**
+       * Get all movies from Kodi, ordered by title
+       *
+       * @return deferred callback returning movies
+       */
       all: function() {
         var deferred = $q.defer();
         var fields = ['title', 'genre', 'year'];
@@ -13,6 +19,13 @@ services.service('Movie', ['KodiWS', '$q',
         });
         return deferred.promise;
       },
+
+      /**
+       * Play a movie
+       *
+       * @param integer movie : the movie ID
+       * @return void
+       */
       play: function(movie) {
         KodiWS.send('Player.Open', { item: { movieid: movie }});
       },
