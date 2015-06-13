@@ -48,7 +48,7 @@ services.service('Music', ['KodiWS', '$q', function(KodiWS, $q) {
             KodiWS.send('Playlist.GetItems', { playlistid: 1, properties: ['track'] }).then(function(data) {
               var items = data.items;
                 for (var pos = 0; pos < items.length ; pos++) {
-                  if (items[pos].id == songId) {
+                  if (items[pos].id === songId) {
                     KodiWS.send('Player.Open', { item: { playlistid: 1, position: pos }});
                   }
                 }

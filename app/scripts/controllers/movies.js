@@ -8,5 +8,5 @@ app.controller('MoviesCtrl', ['$scope', 'Movie', function($scope, Movie) {
   });
   $scope.play = function(movie) {
     Movie.play(movie);
-  }
+  };
 }]);

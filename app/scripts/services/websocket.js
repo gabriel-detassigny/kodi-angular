@@ -21,7 +21,7 @@ services.service('KodiWS', ['$q', '$window', 'KODI_URL', 'SOCKET_TIMEOUT', funct
           else
           {
             console.log('Error : Could not connect to Kodi!');
-            $window.location.href = "#error";
+            $window.location.href = '#error';
           }
         }
       else
@@ -37,9 +37,9 @@ services.service('KodiWS', ['$q', '$window', 'KODI_URL', 'SOCKET_TIMEOUT', funct
       ws.send(JSON.stringify({jsonrpc: '2.0', id: 1, method: method, params: params}));
       ws.onmessage = function(message) {
         var response = JSON.parse(message.data);
-        if (response['error'] !== undefined) {
-          var error = response['error'];
-          console.log(error['data']['method'] + ' : ' + error['message']);
+        if (response.error !== undefined) {
+          var error = response.error;
+          console.log(error.data.method + ' : ' + error.message);
         }
 
         deferred.resolve(response.result);

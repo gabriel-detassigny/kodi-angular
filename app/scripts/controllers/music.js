@@ -23,7 +23,7 @@ app.controller('MusicCtrl', ['$scope', 'Music', 'PER_PAGE', function($scope, Mus
       artistNum += size;
       if (artistNum + size > data.limits.total) {
         size = data.limits.total - artistNum;
-        if (size == 0) {
+        if (size === 0) {
           finished = true;
         }
       }

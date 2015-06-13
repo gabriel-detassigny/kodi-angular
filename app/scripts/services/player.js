@@ -5,7 +5,7 @@
 services.service('KodiPlayer', ['KodiWS', '$q',
   function(KodiWS, $q) {
 
-    function time_format(time) {
+    function timeFormat(time) {
       var string = '';
       if (time.hours > 0) {
         string += time.hours + ':';
@@ -30,7 +30,7 @@ services.service('KodiPlayer', ['KodiWS', '$q',
           var result = null;
           for (var i = 0; i < data.length ; i++)
           {
-            if (data[i].type != 'picture')
+            if (data[i].type !== 'picture')
             {
               result = data[i];
             }
@@ -50,15 +50,15 @@ services.service('KodiPlayer', ['KodiWS', '$q',
             paused: false,
             speed: 0
           };
-          if (data.item.type == 'song')
+          if (data.item.type === 'song')
           {
             item.label = data.item.title + ' - ' + data.item.artist[0];
           }
           KodiWS.send('Player.getProperties', { playerid: playerId, properties: ['time', 'totaltime', 'percentage', 'speed'] }).then(function(data) {
             item.speed = data.speed;
             item.percentage = Math.ceil(data.percentage);
-            item.totalTime = time_format(data.totaltime);
-            item.time = time_format(data.time);
+            item.totalTime = timeFormat(data.totaltime);
+            item.time = timeFormat(data.time);
             deferred.resolve(item);
           });
         });
@@ -74,7 +74,7 @@ services.service('KodiPlayer', ['KodiWS', '$q',
         KodiWS.send('Player.GoTo', { playerid: playerId, to: state });
       },
       changeSpeed: function(playerId, speed, forward) {
-        if (speed == 0) {
+        if (speed === 0) {
           speed = 1;
         }
         var i = speeds.indexOf(speed);

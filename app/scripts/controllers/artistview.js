@@ -8,5 +8,5 @@ app.controller('ArtistViewCtrl', ['$scope', '$routeParams', 'Music', function($s
   });
   $scope.play = function(albumId) {
     Music.playSong(albumId, null);
-  }
+  };
 }]);

@@ -11,7 +11,7 @@
  * Main module of the application.
  */
 
-var services = angular.module('kodiServices', []);
+var services = angular.module('kodiServices', []); // jshint ignore:line
 var app = angular.module('kodiAngularApp', [
     'ngResource',
     'ngRoute',
