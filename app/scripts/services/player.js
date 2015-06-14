@@ -5,6 +5,12 @@
 services.service('KodiPlayer', ['KodiWS', '$q',
   function(KodiWS, $q) {
 
+    /**
+     * Format time into a string
+     *
+     * @param array time : Array with hours, minutes and seconds.
+     * @return string Time formatted as '00:00:00'
+     */
     function timeFormat(time) {
       var string = '';
       if (time.hours > 0) {
@@ -24,6 +30,12 @@ services.service('KodiPlayer', ['KodiWS', '$q',
     var speeds = [-32, -16, -8, -4, -2, -1, 1, 2, 4, 8, 16, 32];
 
     var hash = {
+
+      /**
+       * Get active players from Kodi (if a video or music is being played)
+       *
+       * @return deferred callback with an active player or a null object.
+       */
       active: function() {
         var deferred = $q.defer();
         KodiWS.send('Player.GetActivePlayers', {}).then(function(data) {
@@ -39,6 +51,13 @@ services.service('KodiPlayer', ['KodiWS', '$q',
         });
         return deferred.promise;
       },
+
+      /**
+       * Get the song being played.
+       *
+       * @param integer playerId : the ID of the active player.
+       * @return a deferred callback with the song information.
+       */
       get: function(playerId) {
         var deferred = $q.defer();
         KodiWS.send('Player.getItem', { playerid: playerId, properties: ['title', 'artist'] }).then(function(data) {
@@ -64,15 +83,46 @@ services.service('KodiPlayer', ['KodiWS', '$q',
         });
         return deferred.promise;
       },
+
+      /**
+       * Play or Pause a player.
+       *
+       * @param integer playerId : the ID of the player to pause
+       * @return void
+       */
       playPause: function(playerId) {
         KodiWS.send('Player.PlayPause', { playerid: playerId });
       },
+
+      /**
+       * Stop a player.
+       *
+       * @param integer playerId : the ID of the player to stop
+       * @return void
+       */
       stop: function(playerId) {
         KodiWS.send('Player.Stop', { playerid: playerId });
       },
+
+      /**
+       * Go to previous or next song.
+       *
+       * @param integer playerId : the ID of the player
+       * @param string state : 'previous' or 'next'
+       * @return void
+       */
       changeItem: function(playerId, state) {
         KodiWS.send('Player.GoTo', { playerid: playerId, to: state });
       },
+
+      /**
+       * Go backward or forward with a specified speed
+       *
+       * @param integer playerId : the ID of the player
+       * @param integer speed : the current speed
+       * @param boolean forward
+       * @return void
+       */
       changeSpeed: function(playerId, speed, forward) {
         if (speed === 0) {
           speed = 1;
