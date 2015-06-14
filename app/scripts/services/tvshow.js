@@ -5,6 +5,12 @@
 services.service('TvShow', ['KodiWS', '$q', function(KodiWS, $q) {
   var fields = ['title', 'genre', 'year'];
   var tvshow = {
+
+    /**
+     * Get all TV shows from Kodi
+     *
+     * @return a deferred callback with the TV shows in parameter
+     */
     all: function() {
       var deferred = $q.defer();
       KodiWS.send('VideoLibrary.GetTVShows', { properties: fields, sort: { method: 'title' }}).then(function(data) {
@@ -12,6 +18,13 @@ services.service('TvShow', ['KodiWS', '$q', function(KodiWS, $q) {
       });
       return deferred.promise;
     },
+
+    /**
+     * Find a specific TV show
+     *
+     * @param integer tvshowId : the ID of the TV show
+     * @return a deferred callback with the TV show information
+     */
     find: function(tvshowId) {
       var deferred = $q.defer();
       KodiWS.send('VideoLibrary.GetTVShowDetails', { properties: fields, tvshowid: parseInt(tvshowId) }).then(function(data) {
@@ -23,6 +36,14 @@ services.service('TvShow', ['KodiWS', '$q', function(KodiWS, $q) {
       });
       return deferred.promise;
     },
+
+    /**
+     * Get information on a season.
+     *
+     * @param integer tvshowId : the ID of the TV show
+     * @param integer season : the season number.
+     * @return a callback with the season information.
+     */
     findSeason: function(tvshowId, season) {
       var deferred = $q.defer();
       var result = { tvshowId: tvshowId, season: season };
@@ -35,6 +56,13 @@ services.service('TvShow', ['KodiWS', '$q', function(KodiWS, $q) {
       });
       return deferred.promise;
     },
+
+    /**
+     * Play an episode.
+     *
+     * @param integer episodeId : the ID of the episode.
+     * @return void
+     */
     playEpisode: function(episodeId) {
       KodiWS.send('Player.Open', { item: { episodeid: episodeId }});
     }
