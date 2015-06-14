@@ -1,4 +1,4 @@
-<h2>Remote Control</h2>
+<h2 style="text-align:center;">Remote Control</h2>
 <div class="jumbotron">
   <div style="margin-bottom:5px;">
     <button type="button" ng-click="inputButton('Back')" class="remote-btn btn btn-default"><i class="fa fa-reply"/></button>
@@ -17,7 +17,7 @@
   </div>
 </div>
 <div ng-if="player != null" class="player">
-  <p class="lead">
+  <p class="lead" style="text-align:center;">
     <i ng-if="player.type == 'audio'" class="fa fa-music"/>
     <i ng-if="player.type == 'video'" class="fa fa-film"/>
     {{ playedItem.label }}
@@ -27,13 +27,15 @@
       {{ playedItem.time }} / {{ playedItem.totalTime }}
     </div>
   </div>
-  <button type="button" class="btn btn-default" ng-click="previousButton(player.playerid)"><i class="fa fa-fast-backward"/></button>
-  <button type="button" class="btn btn-default" ng-click="backwardButton(player.playerid, playedItem.speed)"><i class="fa fa-backward"/></button>
-  <button type="button" class="btn btn-default" ng-click="playPauseButton(player.playerid)">
-    <i ng-if="playedItem.speed != 1" class="fa fa-play"/>
-    <i ng-if="playedItem.speed == 1" class="fa fa-pause"/>
-  </button>
-  <button type="button" class="btn btn-default" ng-click="stopButton(player.playerid)"><i class="fa fa-stop"/></button>
-  <button type="button" class="btn btn-default" ng-click="forwardButton(player.playerid, playedItem.speed)"><i class="fa fa-forward"/></button>
-  <button type="button" class="btn btn-default" ng-click="nextButton(player.playerid)"><i class="fa fa-fast-forward"/></button>
+  <div style="text-align:center;">
+    <button type="button" class="btn btn-default btn-lg" ng-click="previousButton(player.playerid)"><i class="fa fa-fast-backward"/></button>
+    <button type="button" class="btn btn-default btn-lg" ng-click="backwardButton(player.playerid, playedItem.speed)"><i class="fa fa-backward"/></button>
+    <button type="button" class="btn btn-default btn-lg" ng-click="playPauseButton(player.playerid)">
+      <i ng-if="playedItem.speed != 1" class="fa fa-play"/>
+      <i ng-if="playedItem.speed == 1" class="fa fa-pause"/>
+    </button>
+    <button type="button" class="btn btn-default btn-lg" ng-click="stopButton(player.playerid)"><i class="fa fa-stop"/></button>
+    <button type="button" class="btn btn-default btn-lg" ng-click="forwardButton(player.playerid, playedItem.speed)"><i class="fa fa-forward"/></button>
+    <button type="button" class="btn btn-default btn-lg" ng-click="nextButton(player.playerid)"><i class="fa fa-fast-forward"/></button>
+  </div>
 </div>
