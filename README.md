@@ -12,6 +12,10 @@ Here is a preview of what the remote control interface looks like.
 
 ![Screenshot](wiki/images/remote.png "Remote")
 
+This is the mobile version :
+
+![Screenshot](wiki/images/remote-mobile.png "Remote mobile")
+
 ### Libraries
 
 For now, there are basic tables to see and play movies or tv shows.
