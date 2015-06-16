@@ -61,6 +61,9 @@ services.service('KodiPlayer', ['KodiWS', '$q',
       get: function(playerId) {
         var deferred = $q.defer();
         KodiWS.send('Player.getItem', { playerid: playerId, properties: ['title', 'artist'] }).then(function(data) {
+          if (data === null) {
+            deferred.resolve(null);
+          }
           var item = {
             label: data.item.label,
             time: null,
@@ -69,8 +72,7 @@ services.service('KodiPlayer', ['KodiWS', '$q',
             paused: false,
             speed: 0
           };
-          if (data.item.type === 'song')
-          {
+          if (data.item.type === 'song') {
             item.label = data.item.title + ' - ' + data.item.artist[0];
           }
           KodiWS.send('Player.getProperties', { playerid: playerId, properties: ['time', 'totaltime', 'percentage', 'speed'] }).then(function(data) {

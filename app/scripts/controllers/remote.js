@@ -19,7 +19,9 @@ app.controller('RemoteCtrl', ['$scope', '$interval', 'KodiRemote', 'KodiPlayer',
         if (player !== null)
         {
           KodiPlayer.get(player.playerid).then(function(data) {
-            $scope.playedItem = data;
+            if (data !== null) {
+              $scope.playedItem = data;
+            }
           });
         }
       });
@@ -49,5 +51,12 @@ app.controller('RemoteCtrl', ['$scope', '$interval', 'KodiRemote', 'KodiPlayer',
       KodiPlayer.changeSpeed(playerId, speed, true);
     };
 
-    $interval( function() { $scope.playerInterval(); }, 1000);
+    var interval = $interval(function() {
+      $scope.playerInterval();
+    }, 1000);
+
+    $scope.$on('$locationChangeStart', function(event) {
+      $interval.cancel(interval);
+    });
+
 }]);
