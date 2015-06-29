@@ -17,8 +17,11 @@
   </div>
 </div>
 <div ng-if="player != null" class="player">
-  <p class="lead" style="text-align:center;">
-    <i ng-if="player.type == 'audio'" class="fa fa-music"/>
+  <p class="lead audio-player" ng-if="player.type == 'audio'" style="text-align:center;">
+    <i class="fa fa-music"/>
+    <a ng-href="#/music/{{ playedItem.artistid }}/albums/{{ playedItem.albumid }}">{{ playedItem.label }}</a>
+  </p>
+  <p class="video-player" ng-if="player.type == 'video'" style="text-align:center;">
     <i ng-if="player.type == 'video'" class="fa fa-film"/>
     {{ playedItem.label }}
   </p>
