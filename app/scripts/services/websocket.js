@@ -27,7 +27,7 @@ services.service('KodiWS', ['$q', '$window', 'KODI_URL', 'SOCKET_TIMEOUT', 'DEBU
 
   ws.onclose = function() {
     debugLog('Closing socket');
-  }
+  };
 
   /**
    * Attempt to connect to the Web Socket (try several times if needed by recursion).

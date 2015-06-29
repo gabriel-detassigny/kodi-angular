@@ -55,7 +55,7 @@ app.controller('RemoteCtrl', ['$scope', '$interval', 'KodiRemote', 'KodiPlayer',
       $scope.playerInterval();
     }, 1000);
 
-    $scope.$on('$locationChangeStart', function(event) {
+    $scope.$on('$locationChangeStart', function() {
       $interval.cancel(interval);
     });
 
