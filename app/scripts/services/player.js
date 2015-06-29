@@ -61,7 +61,7 @@ services.service('KodiPlayer', ['KodiWS', '$q',
       get: function(playerId) {
         var deferred = $q.defer();
         KodiWS.send('Player.getItem', { playerid: playerId, properties: ['title', 'artist', 'artistid', 'albumid'] }).then(function(data) {
-          if (data === null || data === undefined) {
+          if (data === null || data === undefined || data.item === undefined) {
             deferred.resolve(null);
           }
           var item = {
