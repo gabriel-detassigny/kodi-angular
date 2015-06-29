@@ -24,7 +24,7 @@ For now, there are basic tables to see and play movies, tv shows or music:
 
 ## Installation
 
-You need to install XBMC 12.0 or upper, as it uses [Kodi JSON-RPC API v6](http://kodi.wiki/view/JSON-RPC_API) through WebSocket technology. Because of web sockets, a modern browser is required.
+You need to install Kodi 12.0 or upper, as it uses [Kodi JSON-RPC API v6](http://kodi.wiki/view/JSON-RPC_API) through WebSocket technology. Because of web sockets, a modern browser is required.
 
 ### On Kodi
 
