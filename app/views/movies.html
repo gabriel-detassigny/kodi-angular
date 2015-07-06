@@ -7,7 +7,7 @@
       <th>Year</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody infinite-scroll="nextPage()" infinite-scroll-disabled="waiting">
     <tr ng-repeat="movie in movies">
       <td>
         <button type="button" class="btn btn-xs btn-default" ng-click="play(movie.movieid)"><i class="fa fa-play"/></button>
@@ -15,6 +15,12 @@
       </td>
       <td>{{ movie.genre.join(', ') }}</td>
       <td>{{ movie.year }}</td>
+    </tr>
+
+    <tr ng-show="waiting">
+      <td><i class="fa fa-spin fa-spinner"></td>
+      <td>Loading movies...</td>
+      <td />
     </tr>
   </tbody>
 </table>
