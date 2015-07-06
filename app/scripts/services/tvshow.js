@@ -20,6 +20,21 @@ services.service('TvShow', ['KodiWS', '$q', function(KodiWS, $q) {
     },
 
     /**
+     * Get a page of TV shows from Kodi.
+     *
+     * @param integer showNum : the TV show number (e.g. 26 for the 2nd page if we take 25 per page)
+     * @param integer size : the maximum number of shows we want for this page
+     * @return a deferred callback with data in parameter
+     */
+    page: function(showNum, size) {
+      var deferred = $q.defer();
+      KodiWS.send('VideoLibrary.GetTVShows', { properties: fields, sort: { method: 'title' }, limits: { start: showNum, end: size }}).then(function(data) {
+        deferred.resolve(data);
+      });
+      return deferred.promise;
+    },
+
+    /**
      * Find a specific TV show
      *
      * @param integer tvshowId : the ID of the TV show

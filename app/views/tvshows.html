@@ -7,11 +7,17 @@
       <th>Year</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody infinite-scroll="nextPage()" infinite-scroll-disabled="waiting">
     <tr ng-repeat="tvshow in tvshows">
       <td><a ng-href="#/tvshows/{{ tvshow.tvshowid }}">{{ tvshow.title }}</a></td>
       <td>{{ tvshow.genre.join(', ') }}</td>
       <td>{{ tvshow.year }}</td>
+    </tr>
+
+    <tr ng-show="waiting">
+      <td><i class="fa fa-spin fa-spinner"></td>
+      <td>Loading TV shows...</td>
+      <td />
     </tr>
   </tbody>
 </table>
