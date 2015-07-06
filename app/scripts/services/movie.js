@@ -27,7 +27,7 @@ services.service('Movie', ['KodiWS', '$q',
        * @param integer size : the maximum number of movies we want for this page
        * @return a deferred callback with data in parameter
        */
-      paginatedMovies: function(movieNum, size) {
+      page: function(movieNum, size) {
         var deferred = $q.defer();
         var fields = ['title', 'genre', 'year'];
         KodiWS.send('VideoLibrary.GetMovies', { properties: fields, sort: { method: 'title' }, limits: { start: movieNum, end: movieNum + size }}).then(function(data) {

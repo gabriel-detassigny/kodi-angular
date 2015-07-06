@@ -15,7 +15,7 @@ app.controller('MoviesCtrl', ['$scope', 'Movie', 'PER_PAGE', function($scope, Mo
       return ;
     }
     $scope.waiting = true;
-    Movie.paginatedMovies(movieNum, size).then(function(data) {
+    Movie.page(movieNum, size).then(function(data) {
       for (var i = 0; i < data.movies.length; i++) {
         $scope.movies.push(data.movies[i]);
       }
