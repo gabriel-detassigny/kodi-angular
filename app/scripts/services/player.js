@@ -63,6 +63,7 @@ services.service('KodiPlayer', ['KodiWS', '$q',
         KodiWS.send('Player.getItem', { playerid: playerId, properties: ['title', 'artist', 'artistid', 'albumid'] }).then(function(data) {
           if (data === null || data === undefined || data.item === undefined) {
             deferred.resolve(null);
+            return;
           }
           var item = {
             label: data.item.label,
@@ -80,6 +81,7 @@ services.service('KodiPlayer', ['KodiWS', '$q',
           KodiWS.send('Player.getProperties', { playerid: playerId, properties: ['time', 'totaltime', 'percentage', 'speed'] }).then(function(data) {
             if (data === undefined) {
               deferred.resolve(null);
+              return;
             }
             item.speed = data.speed;
             item.percentage = Math.ceil(data.percentage);
