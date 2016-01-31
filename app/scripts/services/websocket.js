@@ -68,7 +68,8 @@ services.service('KodiWS', ['$q', '$window', 'KODI_URL', 'SOCKET_TIMEOUT', 'DEBU
   function sendMessage(method, params) {
     var deferred = $q.defer();
     waitForConnection(function() {
-      ws.send(JSON.stringify({jsonrpc: '2.0', id: 1, method: method, params: params}));
+      var id = Math.floor((Math.random() * 100) + 1);
+      ws.send(JSON.stringify({jsonrpc: '2.0', id: id, method: method, params: params}));
       ws.onmessage = function(message) {
         var response = JSON.parse(message.data);
         if (response.error !== undefined) {
@@ -76,7 +77,9 @@ services.service('KodiWS', ['$q', '$window', 'KODI_URL', 'SOCKET_TIMEOUT', 'DEBU
           debugLog(error.data.method + ' : ' + error.message);
         }
 
-        deferred.resolve(response.result);
+        if (response.id == id) {
+          deferred.resolve(response.result);
+        }
       };
     }, 10);
     return deferred.promise;
