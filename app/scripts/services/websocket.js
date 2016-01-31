@@ -77,7 +77,7 @@ services.service('KodiWS', ['$q', '$window', 'KODI_URL', 'SOCKET_TIMEOUT', 'DEBU
           debugLog(error.data.method + ' : ' + error.message);
         }
 
-        if (response.id == id) {
+        if (response.id === id) {
           deferred.resolve(response.result);
         }
       };

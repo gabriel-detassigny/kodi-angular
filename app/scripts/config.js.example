@@ -1,3 +1,4 @@
+/* exported config */
 'use strict';
 
 var config = angular.module('kodiConfig', [])
