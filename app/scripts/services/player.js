@@ -58,7 +58,7 @@ services.service('KodiPlayer', ['KodiWS', '$q',
        */
       get: function(playerId) {
         var deferred = $q.defer();
-        KodiWS.send('Player.getItem', { playerid: playerId, properties: ['title', 'artist', 'artistid', 'albumid'] }).then(function(data) {
+        KodiWS.send('Player.getItem', { playerid: playerId, properties: ['title', 'artist', 'albumid'] }).then(function(data) {
           if (data === null || data === undefined || data.item === undefined) {
             deferred.resolve(null);
             return;
@@ -73,7 +73,6 @@ services.service('KodiPlayer', ['KodiWS', '$q',
           };
           if (data.item.type === 'song') {
             item.label = data.item.title + ' - ' + data.item.artist[0];
-            item.artistid = data.item.artistid[0];
             item.albumid = data.item.albumid;
           }
           KodiWS.send('Player.getProperties', { playerid: playerId, properties: ['time', 'totaltime', 'percentage', 'speed'] }).then(function(data) {
