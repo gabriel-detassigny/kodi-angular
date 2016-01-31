@@ -24,8 +24,7 @@ services.service('KodiRemote', ['KodiWS',
        */
       volumeDown: function() {
         KodiWS.send('Application.GetProperties', {properties: ['volume']}).then(function(data) {
-          if (data.volume > 0)
-            {
+          if (data.volume > 0) {
               KodiWS.send('Application.SetVolume', {volume: (data.volume - 5)});
             }
         });
@@ -38,8 +37,7 @@ services.service('KodiRemote', ['KodiWS',
        */
       volumeUp: function() {
         KodiWS.send('Application.GetProperties', {properties: ['volume']}).then(function(data) {
-          if (data.volume < 100)
-            {
+          if (data.volume < 100) {
               KodiWS.send('Application.SetVolume', {volume: (data.volume + 5)});
             }
         });

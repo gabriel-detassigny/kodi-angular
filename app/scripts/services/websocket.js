@@ -38,21 +38,15 @@ services.service('KodiWS', ['$q', '$window', 'KODI_URL', 'SOCKET_TIMEOUT', 'DEBU
    */
   function waitForConnection(callback, attempt) {
     setTimeout(function() {
-      if (ws.readyState !== WebSocket.OPEN)
-        {
-          if (attempt > 0)
-          {
+      if (ws.readyState !== WebSocket.OPEN) {
+          if (attempt > 0) {
             debugLog('Wait for connection...');
             waitForConnection(callback, attempt - 1);
-          }
-          else
-          {
+          } else {
             debugLog('Error : Could not connect to Kodi!');
             $window.location.href = '#error';
           }
-        }
-      else
-        {
+        } else {
           callback();
         }
     }, SOCKET_TIMEOUT);
