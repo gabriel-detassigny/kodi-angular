@@ -40,10 +40,8 @@ services.service('KodiPlayer', ['KodiWS', '$q',
         var deferred = $q.defer();
         KodiWS.send('Player.GetActivePlayers', {}).then(function(data) {
           var result = null;
-          for (var i = 0; i < data.length ; i++)
-          {
-            if (data[i].type !== 'picture')
-            {
+          for (var i = 0; i < data.length ; i++) {
+            if (data[i].type !== 'picture') {
               result = data[i];
             }
           }
