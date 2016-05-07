@@ -1,9 +1,15 @@
 /* exported config */
 'use strict';
 
-var config = angular.module('kodiConfig', [])
-  .constant('KODI_URL', '192.168.0.1')
-  .constant('SOCKET_TIMEOUT', 200)
-  .constant('PER_PAGE', 100)
-  .constant('DEBUG', false)
-;
+var configValues = {
+  KODI_URL: '192.168.0.1', // IP or URL to your Kodi instance
+  SOCKET_TIMEOUT: 200, // Timeout limit for socket connection. Increase if necessary
+  PER_PAGE: 100, // Number of elements to load per page in libraries when scrolling
+  DEBUG: false // Set to true to see console log debug messages
+};
+
+var config = angular.module('kodiConfig', []);
+
+for (var key in configValues) {
+  config.constant(key, configValues[key]);
+}
