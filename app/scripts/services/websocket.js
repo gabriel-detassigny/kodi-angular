@@ -33,7 +33,7 @@ services.service('KodiWS', ['$q', '$window', 'KODI_URL', 'SOCKET_TIMEOUT', 'DEBU
    * Attempt to connect to the Web Socket (try several times if needed by recursion).
    *
    * @param The callback to call if connection succeed.
-   * @param integer attempt : the attempt tumber (decreasing until 0).
+   * @param integer attempt : the attempt number (decreasing until 0).
    * @return void
    */
   function waitForConnection(callback, attempt) {
