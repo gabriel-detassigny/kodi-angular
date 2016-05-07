@@ -19,7 +19,12 @@
         {{ song.track }}
       </td>
       <td><strong>{{ song.title }}</strong></td>
-      <td>{{ song.minutes }}:{{ song.seconds < 10 ? '0' + song.seconds : song.seconds }}</td>
+      <td ng-if="song.seconds < 10">
+        {{ song.minutes }}:0{{ song.seconds }}
+      </td>
+      <td ng-if="song.seconds >= 10">
+        {{ song.minutes }}:{{ song.seconds }}
+      </td>
     </tr>
   </tbody>
 </table>
