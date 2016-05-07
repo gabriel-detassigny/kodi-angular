@@ -16,12 +16,12 @@
   <tbody>
     <tr ng-repeat="episode in season.episodes">
       <td>
-        <button type="button" class="btn btn-xs btn-default" ng-click="play(episode.episodeid)"><i class="fa fa-play"/></button>
+        <button type="button" class="btn btn-xs btn-default" ng-click="play(episode.episodeid)"><i class="fa fa-play"></i></button>
         <strong>{{ episode.label }}</strong>
       </td>
       <td>{{ episode.rating | number:1 }}</td>
       <td>{{ episode.firstaired }}</td>
-      <td><i ng-if="episode.playcount > 0" class="fa fa-check"/></td>
+      <td><i ng-if="episode.playcount > 0" class="fa fa-check"></i></td>
     </tr>
   </tbody>
 </table>
