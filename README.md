@@ -2,7 +2,7 @@
 
 This is a web interface for the entertainment center [Kodi](http://kodi.tv/), using AngularJS.
 
-It uses [Bootstrap](http://getbootstrap.com/) for the design, and communicate through web sockets with Kodi.
+It uses [Bootstrap](http://getbootstrap.com/) for the design and communicate through web sockets with Kodi.
 
 Moreover, it is designed as a responsive interface.
 
@@ -24,19 +24,30 @@ For now, there are basic tables to see and play movies, tv shows or music:
 
 ## Installation
 
-You need to install Kodi 12.0 or upper, as it uses [Kodi JSON-RPC API v6](http://kodi.wiki/view/JSON-RPC_API) through WebSocket technology. Because of web sockets, a modern browser is required.
+You need to install Kodi version 12.0 or higher, as it uses [Kodi JSON-RPC API v6](http://kodi.wiki/view/JSON-RPC_API) through WebSocket technology.
 
 ### On Kodi
 
-External control of the application must be authorize, to do so, on Kodi, go to :
+External control of the application must be authorize. To do so, go to these settings in Kodi :
 > System > Services > Remote Control
 
-And allow control for other application from both inside and outside the system.
+And allow control for other applications from outside the system.
 
 ### On your machine
 
-You'll need __Npm__ and __Bower__ for packages dependencies, as well as __Grunt__ to run your application.
+#### Dependencies
 
-To connect the Angular app with Kodi, rename the file _app/scripts/config.js.example_ to _app/scripts/config.js_
+You need to have [NPM](https://www.npmjs.com/), [Bower](http://bower.io/), and [Grunt](gruntjs.com) installed on your machine.
 
-Then, change the value of the constant named *KODI_URL* to the IP / domain of Kodi.
+#### Configuration
+
+There is a configuration file sample at _app/scripts/config.js.example_ .
+
+Just copy it to _app/scripts/config.js_ and change the config values to your need. (You will probably at least need to change the IP of your Kodi instance).
+
+#### Build the App
+
+You can now build your application by typing :
+```
+npm install && bower install && grunt build
+```
