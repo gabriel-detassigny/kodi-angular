@@ -51,3 +51,5 @@ You can now build your application by typing :
 ```
 npm install && bower install && grunt build
 ```
+
+It should generate all HTML/CSS/JS in a __dist__ folder.
