@@ -2,8 +2,8 @@
 
 'use strict';
 
-services.service('KodiWS', ['$q', '$window', 'KODI_URL', 'SOCKET_TIMEOUT', 'DEBUG', function($q, $window, KODI_URL, SOCKET_TIMEOUT, DEBUG) {
-  var ws = new WebSocket('ws://' + KODI_URL + ':9090/jsonrpc');
+services.service('KodiWS', ['$q', '$window', 'KODI_URL', 'KODI_PORT', 'SOCKET_TIMEOUT', 'DEBUG', function($q, $window, KODI_URL, KODI_PORT, SOCKET_TIMEOUT, DEBUG) {
+  var ws = new WebSocket('ws://' + KODI_URL + ':' + KODI_PORT + '/jsonrpc');
 
   /**
    * Display console logs if DEBUG is set in config.js
