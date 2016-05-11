@@ -74,3 +74,10 @@ body {
   width: 75px;
   height: 70px;
 }
+
+#kodi-logo {
+  max-width: 25px;
+  max-height: 25px;
+  float: left;
+  margin-right: 5px;
+}
