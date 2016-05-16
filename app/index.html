@@ -40,10 +40,18 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse" ng-controller="MainCtrl">
               <ul class="nav navbar-nav navbar-right">
-                <li ng-class="{active:isActive('/remote')}"><a ng-href="#/remote">Remote</a></li>
-                <li ng-class="{active:isActive('/tvshows')}"><a ng-href="#/tvshows">TV Shows</a></li>
-                <li ng-class="{active:isActive('/movies')}"><a ng-href="#/movies">Movies</a></li>
-                <li ng-class="{active:isActive('/music')}"><a ng-href="#/music">Music</a></li>
+                <li ng-class="{active:isActive('/remote')}">
+                  <a ng-href="#/remote"><i class="fa fa-arrows"></i> Remote</a>
+                </li>
+                <li ng-class="{active:isActive('/tvshows')}">
+                  <a ng-href="#/tvshows"><i class="fa fa-tv"></i> TV Shows</a>
+                </li>
+                <li ng-class="{active:isActive('/movies')}">
+                  <a ng-href="#/movies"><i class="fa fa-film"></i> Movies</a>
+                </li>
+                <li ng-class="{active:isActive('/music')}">
+                  <a ng-href="#/music"><i class="fa fa-music"></i> Music</a>
+                </li>
               </ul>
             </div>
           </div>
