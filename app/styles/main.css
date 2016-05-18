@@ -79,6 +79,10 @@ body {
   margin-bottom: 5px;
 }
 
+.remote-btn-top-row {
+  margin-bottom: 25px;
+}
+
 #kodi-logo {
   max-width: 25px;
   max-height: 25px;
