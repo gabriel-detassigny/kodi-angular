@@ -9,7 +9,7 @@
     "angular-resource": "1.2.16",
     "angular-route": "1.2.16",
     "ngInfiniteScroll": "1.0.0",
-    "font-awesome": "~4.6.0"
+    "components-font-awesome": "^4.6.3"
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",
