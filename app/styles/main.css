@@ -72,7 +72,11 @@ body {
 
 .remote-btn {
   width: 75px;
-  height: 70px;
+  height: 60px;
+}
+
+.remote-btn-row {
+  margin-bottom: 5px;
 }
 
 #kodi-logo {
