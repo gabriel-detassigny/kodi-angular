@@ -1,17 +1,5 @@
 <div class="jumbotron">
 
-  <div class="remote-btn-top-row">
-    <button type="button" ng-click="inputButton('ContextMenu')" class="remote-btn btn btn-default">
-      <i class="fa fa-bars"></i>
-    </button>
-    <button type="button" class="remote-btn btn btn-danger">
-      <i class="fa fa-power-off"></i>
-    </button>
-    <button type="button" ng-click="inputButton('Info')" class="remote-btn btn btn-default">
-      <i class="fa fa-info-circle"></i>
-    </button>
-  </div>
-
   <div class="remote-btn-row">
     <button type="button" ng-click="inputButton('Back')" class="remote-btn btn btn-default">
       <i class="fa fa-reply"></i>
@@ -47,23 +35,22 @@
       <i class="fa fa-volume-up"></i>
     </button>
   </div>
+
+  <div class="remote-btn-actions-row">
+    <button type="button" ng-click="inputButton('ContextMenu')" class="remote-btn btn btn-default">
+      <i class="fa fa-bars"></i>
+    </button>
+    <button type="button" class="remote-btn btn btn-danger">
+      <i class="fa fa-power-off"></i>
+    </button>
+    <button type="button" ng-click="inputButton('Info')" class="remote-btn btn btn-default">
+      <i class="fa fa-info-circle"></i>
+    </button>
+  </div>
 </div>
 
 <div ng-if="player != null" class="player">
-  <p class="lead audio-player" ng-if="player.type == 'audio'" style="text-align:center;">
-    <i class="fa fa-music"></i>
-    {{ playedItem.label }}
-  </p>
-  <p class="video-player" ng-if="player.type == 'video'" style="text-align:center;">
-    <i ng-if="player.type == 'video'" class="fa fa-film"></i>
-    {{ playedItem.label }}
-  </p>
-  <div class="progress">
-    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{ playedItem.percentage }}%;">
-      {{ playedItem.time }} / {{ playedItem.totalTime }}
-    </div>
-  </div>
-  <div style="text-align:center;">
+  <div class="player-buttons">
     <button type="button" class="btn btn-default btn-lg" ng-click="previousButton(player.playerid)"><i class="fa fa-fast-backward"></i></button>
     <button type="button" class="btn btn-default btn-lg" ng-click="backwardButton(player.playerid, playedItem.speed)"><i class="fa fa-backward"></i></button>
     <button type="button" class="btn btn-default btn-lg" ng-click="playPauseButton(player.playerid)">
@@ -73,5 +60,19 @@
     <button type="button" class="btn btn-default btn-lg" ng-click="stopButton(player.playerid)"><i class="fa fa-stop"></i></button>
     <button type="button" class="btn btn-default btn-lg" ng-click="forwardButton(player.playerid, playedItem.speed)"><i class="fa fa-forward"></i></button>
     <button type="button" class="btn btn-default btn-lg" ng-click="nextButton(player.playerid)"><i class="fa fa-fast-forward"></i></button>
+  </div>
+
+  <p class="lead audio-player" ng-if="player.type == 'audio'">
+    <i class="fa fa-music"></i>
+    {{ playedItem.label }}
+  </p>
+  <p class="video-player" ng-if="player.type == 'video'">
+    <i ng-if="player.type == 'video'" class="fa fa-film"></i>
+    {{ playedItem.label }}
+  </p>
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{ playedItem.percentage }}%;">
+      {{ playedItem.time }} / {{ playedItem.totalTime }}
+    </div>
   </div>
 </div>

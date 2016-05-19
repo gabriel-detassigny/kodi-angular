@@ -79,8 +79,16 @@ body {
   margin-bottom: 5px;
 }
 
-.remote-btn-top-row {
-  margin-bottom: 25px;
+.remote-btn-actions-row {
+  margin-top: 20px;
+}
+
+.player {
+  text-align: center;
+}
+
+.player-buttons {
+  margin-bottom: 15px;
 }
 
 #kodi-logo {
