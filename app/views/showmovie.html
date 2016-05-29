@@ -2,3 +2,35 @@
   <li><a ng-href="#/movies">Movies</a></li>
   <li class="active">{{ movie.label }}</li>
 </ol>
+
+<h2>{{ movie.title }} ({{ movie.year }})</h2>
+<p class="lead">{{ movie.plot }}</p>
+
+<div class="row">
+  <div class="col-md-2"><strong>Genre</strong></div>
+  <div class="col-md-6">{{ movie.genre.join(' / ')}}</div>
+</div>
+
+<div class="row">
+  <div class="col-md-2"><strong>Director</strong></div>
+  <div class="col-md-6">{{ movie.director.join(' / ')}}</div>
+</div>
+
+<div class="row">
+  <div class="col-md-2"><strong>Rating</strong></div>
+  <div class="col-md-6">{{ movie.rating }}</div>
+</div>
+
+<div class="row">
+  <div class="col-md-2"><strong>Duration</strong></div>
+  <div class="col-md-6">{{ movie.runtime }} mins</div>
+</div>
+
+<div class="row">
+  <div class="col-md-2"><strong>Cast</strong></div>
+  <div class="col-md-8">
+    <div ng-repeat="cast in movie.cast">
+      <strong>{{ cast.name }}</strong> as {{ cast.role }}
+    </div>
+  </div>
+</div>

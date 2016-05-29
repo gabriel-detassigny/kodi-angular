@@ -46,12 +46,21 @@ services.service('Movie', ['KodiWS', '$q',
         KodiWS.send('Player.Open', { item: { movieid: movie }});
       },
 
+      /**
+       * Find a movie by its ID
+       *
+       * @param integer movie : the movie ID
+       * @return a deferred callback with movie details.
+       */
       find: function(movieId) {
         var deferred = $q.defer();
-        var fields = ['title', 'year', 'genre', 'rating', 'director', 'plot', 'runtime', 'thumbnail'];
+        var fields = ['title', 'year', 'genre', 'rating', 'director', 'plot', 'runtime', 'thumbnail', 'cast'];
         KodiWS.send('VideoLibrary.GetMovieDetails', { movieid: parseInt(movieId), properties: fields }).then(function(data) {
-          console.log(data);
-          deferred.resolve(data.moviedetails);
+          var movie = data.moviedetails;
+          movie.rating = Math.round(movie.rating * 10) / 10;
+          movie.runtime = movie.runtime / 60;
+          movie.cast = movie.cast.slice(0, 5);
+          deferred.resolve(movie);
         });
         return deferred.promise;
       }
