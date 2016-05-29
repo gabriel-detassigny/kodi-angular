@@ -1,12 +1,10 @@
 'use strict';
 
 describe('Kodi remote service', function() {
-  var mockKodiWS, KodiRemote;
+  var mockKodiWS;
 
   // Load module
-  beforeEach(function() {
-    var services = module('kodiServices');
-  });
+  beforeEach(module('kodiServices'));
 
   // Mock Kodi Web Socket service
   function mockWebSocket(sendCallback) {
