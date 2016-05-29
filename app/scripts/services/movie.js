@@ -45,6 +45,16 @@ services.service('Movie', ['KodiWS', '$q',
       play: function(movie) {
         KodiWS.send('Player.Open', { item: { movieid: movie }});
       },
+
+      find: function(movieId) {
+        var deferred = $q.defer();
+        var fields = ['title', 'year', 'genre', 'rating', 'director', 'plot', 'runtime', 'thumbnail'];
+        KodiWS.send('VideoLibrary.GetMovieDetails', { movieid: parseInt(movieId), properties: fields }).then(function(data) {
+          console.log(data);
+          deferred.resolve(data.moviedetails);
+        })
+        return deferred.promise;
+      }
     };
     return movie;
   }
