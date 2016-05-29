@@ -3,23 +3,26 @@
 describe('Kodi remote service', function() {
   var mockKodiWS, KodiRemote;
 
+  // Load module
   beforeEach(function() {
     var services = module('kodiServices');
   });
 
-  beforeEach(function () {
-      mockKodiWS = {
-          send: function (action, options) {
-          }
-      };
-      spyOn(mockKodiWS, 'send');
-      module(function ($provide) {
-          $provide.value('KodiWS', mockKodiWS);
-      });
-  });
+  // Mock Kodi Web Socket service
+  function mockWebSocket(sendCallback) {
+    mockKodiWS = { send: sendCallback };
+    spyOn(mockKodiWS, 'send');
+    module(function ($provide) {
+      $provide.value('KodiWS', mockKodiWS);
+    });
+  }
 
-  it('should send an input action', inject(function(KodiRemote) {
-    KodiRemote.input('test');
-    expect(mockKodiWS.send).toHaveBeenCalledWith('Input.test', {});
-  }));
+  it('should send an input action', function() {
+    mockWebSocket(function() {});
+
+    inject(function(KodiRemote) {
+      KodiRemote.input('test');
+      expect(mockKodiWS.send).toHaveBeenCalledWith('Input.test', {});
+    });
+  });
 });
