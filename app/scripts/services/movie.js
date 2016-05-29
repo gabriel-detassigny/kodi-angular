@@ -52,7 +52,7 @@ services.service('Movie', ['KodiWS', '$q',
         KodiWS.send('VideoLibrary.GetMovieDetails', { movieid: parseInt(movieId), properties: fields }).then(function(data) {
           console.log(data);
           deferred.resolve(data.moviedetails);
-        })
+        });
         return deferred.promise;
       }
     };
