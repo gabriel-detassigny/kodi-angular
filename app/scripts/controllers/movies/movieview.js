@@ -6,4 +6,7 @@ app.controller('MovieViewCtrl', ['$scope', '$routeParams', 'Movie', function($sc
   Movie.find($routeParams.movieId).then(function(data) {
     $scope.movie = data;
   });
+  $scope.play = function(movie) {
+    Movie.play(movie);
+  };
 }]);
