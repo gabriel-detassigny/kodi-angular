@@ -34,35 +34,35 @@ var app = angular.module('kodiAngularApp', [
         controller: 'RemoteCtrl'
       })
       .when('/tvshows', {
-        templateUrl: 'views/tvshows.html',
+        templateUrl: 'views/tvshows/tvshows.html',
         controller: 'TvShowsCtrl'
       })
       .when('/tvshows/:tvshowId', {
-        templateUrl: 'views/showtvshow.html',
+        templateUrl: 'views/tvshows/showtvshow.html',
         controller: 'TvShowViewCtrl'
       })
       .when('/tvshows/:tvshowId/seasons/:season', {
-        templateUrl: 'views/showseason.html',
+        templateUrl: 'views/tvshows/showseason.html',
         controller: 'SeasonViewCtrl'
       })
       .when('/movies', {
-        templateUrl: 'views/movies.html',
+        templateUrl: 'views/movies/movies.html',
         controller: 'MoviesCtrl'
       })
       .when('/movies/:movieId', {
-        templateUrl: 'views/showmovie.html',
+        templateUrl: 'views/movies/showmovie.html',
         controller: 'MovieViewCtrl'
       })
       .when('/music', {
-        templateUrl: 'views/music.html',
+        templateUrl: 'views/music/music.html',
         controller: 'MusicCtrl'
       })
       .when('/music/:artistId', {
-        templateUrl: 'views/showartist.html',
+        templateUrl: 'views/music/showartist.html',
         controller: 'ArtistViewCtrl'
       })
       .when('/music/:artistId/albums/:albumId', {
-        templateUrl: 'views/showalbum.html',
+        templateUrl: 'views/music/showalbum.html',
         controller: 'AlbumViewCtrl'
       })
       .when('/error', {
