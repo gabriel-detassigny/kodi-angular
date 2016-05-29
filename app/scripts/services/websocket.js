@@ -66,12 +66,13 @@ services.service('KodiWS', ['$q', '$window', 'KODI_URL', 'KODI_PORT', 'SOCKET_TI
       ws.send(JSON.stringify({jsonrpc: '2.0', id: id, method: method, params: params}));
       ws.onmessage = function(message) {
         var response = JSON.parse(message.data);
-        if (response.error !== undefined) {
-          var error = response.error;
-          debugLog(error.data.method + ' : ' + error.message);
-        }
 
         if (response.id === id) {
+          if (response.error !== undefined) {
+            var error = response.error;
+            debugLog(method + ' : ' + error.message);
+          }
+
           deferred.resolve(response.result);
         }
       };
