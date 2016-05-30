@@ -3,8 +3,8 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Genre</th>
       <th>Year</th>
+      <th>Seen</th>
     </tr>
   </thead>
   <tbody infinite-scroll="nextPage()" infinite-scroll-disabled="waiting">
@@ -13,8 +13,8 @@
         <button type="button" class="btn btn-xs btn-default" ng-click="play(movie.movieid)"><i class="fa fa-play"></i></button>
         <strong><a ng-href="#/movies/{{ movie.movieid }}">{{ movie.title }}</a></strong>
       </td>
-      <td>{{ movie.genre.join(', ') }}</td>
       <td>{{ movie.year }}</td>
+      <td><i ng-if="movie.playcount > 0" class="fa fa-check"></i></td>
     </tr>
 
     <tr ng-show="waiting">

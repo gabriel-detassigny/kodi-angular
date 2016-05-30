@@ -13,7 +13,7 @@ services.service('Movie', ['KodiWS', '$q',
        */
       all: function() {
         var deferred = $q.defer();
-        var fields = ['title', 'genre', 'year'];
+        var fields = ['title', 'year', 'playcount'];
         KodiWS.send('VideoLibrary.GetMovies', { properties: fields, sort: { method: 'title' }}).then(function(data) {
           deferred.resolve(data.movies);
         });
@@ -29,7 +29,7 @@ services.service('Movie', ['KodiWS', '$q',
        */
       page: function(movieNum, size) {
         var deferred = $q.defer();
-        var fields = ['title', 'genre', 'year'];
+        var fields = ['title', 'year', 'playcount'];
         KodiWS.send('VideoLibrary.GetMovies', { properties: fields, sort: { method: 'title' }, limits: { start: movieNum, end: movieNum + size }}).then(function(data) {
           deferred.resolve(data);
         });
