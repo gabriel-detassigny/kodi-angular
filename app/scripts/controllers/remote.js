@@ -2,7 +2,7 @@
 
 'use strict';
 
-app.controller('RemoteCtrl', ['$scope', '$interval', 'KodiRemote', 'KodiPlayer', function ($scope, $interval, KodiRemote, KodiPlayer) {
+app.controller('RemoteCtrl', ['$scope', '$interval', '$window', 'KodiRemote', 'KodiPlayer', function ($scope, $interval, $window, KodiRemote, KodiPlayer) {
     $scope.inputButton = function(action) {
       KodiRemote.input(action);
     };
@@ -11,6 +11,10 @@ app.controller('RemoteCtrl', ['$scope', '$interval', 'KodiRemote', 'KodiPlayer',
     };
     $scope.volumeUpButton = function() {
       KodiRemote.volumeUp();
+    };
+
+    $scope.goToShutdown = function() {
+      $window.location.href = '#system/shutdown';
     };
 
     $scope.playerInterval = function() {

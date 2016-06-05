@@ -33,6 +33,10 @@ var app = angular.module('kodiAngularApp', [
         templateUrl: 'views/remote.html',
         controller: 'RemoteCtrl'
       })
+      .when('/system/shutdown', {
+        templateUrl: 'views/system/shutdown.html',
+        controller: 'ShutdownCtrl'
+      })
       .when('/tvshows', {
         templateUrl: 'views/tvshows/tvshows.html',
         controller: 'TvShowsCtrl'

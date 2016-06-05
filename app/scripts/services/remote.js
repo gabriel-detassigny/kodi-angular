@@ -41,6 +41,16 @@ services.service('KodiRemote', ['KodiWS',
               KodiWS.send('Application.SetVolume', {volume: (data.volume + 5)});
             }
         });
+      },
+
+      /**
+       * Send a basic system action to Kodi (Reboot, Shutdown, etc)
+       *
+       * @param string action : the name of the action.
+       * @return void
+       */
+      system: function(action) {
+        KodiWS.send('System.' + action, {});
       }
     };
     return remote;
