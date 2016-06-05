@@ -23,4 +23,13 @@ describe('Kodi remote service', function() {
       expect(mockKodiWS.send).toHaveBeenCalledWith('Input.test', {});
     });
   });
+
+  it('should send a system action', function() {
+    mockWebSocket(function() {});
+
+    inject(function(KodiRemote) {
+      KodiRemote.system('test');
+      expect(mockKodiWS.send).toHaveBeenCalledWith('System.test', {});
+    });
+  });
 });
