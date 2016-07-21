@@ -17,6 +17,7 @@ app.controller('MusicCtrl', ['$scope', 'Music', 'PER_PAGE', function($scope, Mus
     }
     $scope.waiting = true;
     Music.artists(artistNum, size).then(function(data) {
+      data.artists = data.artists || [];
       for (var i = 0; i < data.artists.length; i++) {
         $scope.artists.push(data.artists[i]);
       }

@@ -1,0 +1,27 @@
+<ol class="breadcrumb">
+  <li><a ng-href="#/tvshows">TV Shows</a></li>
+  <li><a ng-href="#/tvshows/{{ season.tvshowId }}">{{ season.tvshow }}</a></li>
+  <li class="active">Season {{ season.season }}</li>
+</ol>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Episode</th>
+      <th>Rating</th>
+      <th>First aired</th>
+      <th>Seen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="episode in season.episodes">
+      <td>
+        <button type="button" class="btn btn-xs btn-default" ng-click="play(episode.episodeid)"><i class="fa fa-play"></i></button>
+        <strong>{{ episode.label }}</strong>
+      </td>
+      <td>{{ episode.rating | number:1 }}</td>
+      <td>{{ episode.firstaired }}</td>
+      <td><i ng-if="episode.playcount > 0" class="fa fa-check"></i></td>
+    </tr>
+  </tbody>
+</table>

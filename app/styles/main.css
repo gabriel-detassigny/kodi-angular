@@ -106,3 +106,7 @@ body {
 .system-btn {
   min-width: 170px;
 }
+
+img.thumb-list {
+  width: 32px;
+}

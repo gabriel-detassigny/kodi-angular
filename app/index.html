@@ -52,6 +52,9 @@
                 <li ng-class="{active:isActive('/music')}">
                   <a ng-href="#/music"><i class="fa fa-music"></i> Music</a>
                 </li>
+                <li ng-class="{active:isActive('/addons')}">
+                  <a ng-href="#/addons"><i class="fa fa-puzzle-piece"></i> Addons</a>
+                </li>
               </ul>
             </div>
           </div>
@@ -84,6 +87,8 @@
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/filters/encodeKodiFolder.js"></script>
+        <script src="scripts/filters/kodiThumbnailUrl.js"></script>
         <script src="scripts/config.js"></script>
         <script src="scripts/app.js"></script>
 
@@ -93,6 +98,7 @@
         <script src="scripts/services/tvshow.js"></script>
         <script src="scripts/services/player.js"></script>
         <script src="scripts/services/music.js"></script>
+        <script src="scripts/services/addon.js"></script>
 
         <script src="scripts/controllers/remote.js"></script>
         <script src="scripts/controllers/system/shutdown.js"></script>
@@ -104,6 +110,9 @@
         <script src="scripts/controllers/music/music.js"></script>
         <script src="scripts/controllers/music/artistview.js"></script>
         <script src="scripts/controllers/music/albumview.js"></script>
+        <script src="scripts/controllers/addons/addons.js"></script>
+        <script src="scripts/controllers/addons/addonview.js"></script>
+        <script src="scripts/controllers/addons/folderview.js"></script>
         <script src="scripts/controllers/error.js"></script>
         <!-- endbuild -->
 </body>

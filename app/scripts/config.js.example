@@ -4,6 +4,7 @@
 var configValues = {
   KODI_URL: '192.168.0.1', // IP or URL to your Kodi instance
   KODI_PORT: 9090, // TCP port for WebSocket connection to Kodi
+  KODI_HTTP_PORT: 8080, // TCP port for HTTP connection to Kodi (acquire thumbnails)
   SOCKET_TIMEOUT: 200, // Timeout limit for socket connection. Increase if necessary
   PER_PAGE: 100, // Number of elements to load per page in libraries when scrolling
   DEBUG: false // Set to true to see console log debug messages

@@ -1,0 +1,40 @@
+<h2>TV Shows</h2>
+<div class="collapse navbar-collapse" id="navbar-collapse" ng-controller="MainCtrl">
+  <ul class="nav navbar-nav navbar-right">
+    <li ng-class="{active:isActive('/addons')}">
+      <a ng-href="#/addons"><i class="fa fa-tv"></i> All</a>
+    </li>
+    <li ng-class="{active:isActive('/addons/audio')}">
+      <a ng-href="#/addons/audio"><i class="fa fa-tv"></i> Audio</a>
+    </li>
+    <li ng-class="{active:isActive('/addons/video')}">
+      <a ng-href="#/addons/video"><i class="fa fa-film"></i> Video</a>
+    </li>
+    <li ng-class="{active:isActive('/addons/image')}">
+      <a ng-href="#/addons/image"><i class="fa fa-picture"></i> Image</a>
+    </li>
+    <li ng-class="{active:isActive('/addons/executable')}">
+      <a ng-href="#/addons/executable"><i class="fa fa-puzzle-piece"></i> Executable</a>
+    </li>
+  </ul>
+</div>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Summary</th>
+    </tr>
+  </thead>
+  <tbody infinite-scroll="nextPage()" infinite-scroll-disabled="waiting">
+    <tr ng-repeat="addon in addons">
+      <td><a ng-href="#/addon/{{ addon.addonid }}/folder">{{ addon.name }}</a></td>
+      <td>{{ addon.summary }}</td>
+    </tr>
+
+    <tr ng-show="waiting">
+      <td><i class="fa fa-spin fa-spinner"></i></td>
+      <td>Loading Addons...</td>
+      <td />
+    </tr>
+  </tbody>
+</table>

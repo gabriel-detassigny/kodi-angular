@@ -2,7 +2,7 @@
 
 'use strict';
 
-services.service('KodiWS', ['$q', '$window', 'KODI_URL', 'KODI_PORT', 'SOCKET_TIMEOUT', 'DEBUG', function($q, $window, KODI_URL, KODI_PORT, SOCKET_TIMEOUT, DEBUG) {
+services.service('KodiWS', ['$q', '$window', 'KODI_URL', 'KODI_PORT', 'KODI_HTTP_PORT', 'SOCKET_TIMEOUT', 'DEBUG', function($q, $window, KODI_URL, KODI_PORT, KODI_HTTP_PORT, SOCKET_TIMEOUT, DEBUG) {
   var ws = new WebSocket('ws://' + KODI_URL + ':' + KODI_PORT + '/jsonrpc');
 
   /**
@@ -39,16 +39,16 @@ services.service('KodiWS', ['$q', '$window', 'KODI_URL', 'KODI_PORT', 'SOCKET_TI
   function waitForConnection(callback, attempt) {
     setTimeout(function() {
       if (ws.readyState !== WebSocket.OPEN) {
-          if (attempt > 0) {
-            debugLog('Wait for connection...');
-            waitForConnection(callback, attempt - 1);
-          } else {
-            debugLog('Error : Could not connect to Kodi!');
-            $window.location.href = '#error';
-          }
+        if (attempt > 0) {
+          debugLog('Wait for connection...');
+          waitForConnection(callback, attempt - 1);
         } else {
-          callback();
+          debugLog('Error : Could not connect to Kodi!');
+          $window.location.href = '#error';
         }
+      } else {
+        callback();
+      }
     }, SOCKET_TIMEOUT);
   }
 
@@ -80,8 +80,22 @@ services.service('KodiWS', ['$q', '$window', 'KODI_URL', 'KODI_PORT', 'SOCKET_TI
     return deferred.promise;
   }
 
+  /**
+   *
+   * @param thumbUrl {string} - encoded url for thumbnail (as it usually return Kodi), for example: <code>image://http%3a%2f%2fcdn-radiotime-logos.tunein.com%2fs100934q.png/</code>
+   * @return url {string} - proper thumbnail url, for example: <code>http://192.168.2.124:8080/image/http%3a%2f%2fcdn-radiotime-logos.tunein.com%2fs100934q.png</code>
+   */
+  function getThumbnailURL(thumbUrl) {
+    thumbUrl = thumbUrl.replace('image://', '');
+    if (thumbUrl.charAt(thumbUrl.length - 1) === '/') {
+      thumbUrl = thumbUrl.substring(0, thumbUrl.length - 1);
+    }
+    return 'http://' + KODI_URL + ':' + KODI_HTTP_PORT + '/image/' + thumbUrl;
+  }
+
   var service = {
     send: sendMessage,
+    getThumbnailURL: getThumbnailURL
   };
   return service;
 }]);

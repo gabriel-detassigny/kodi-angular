@@ -2,23 +2,23 @@
 
 'use strict';
 
-app.controller('TvShowsCtrl', ['$scope', 'TvShow', 'PER_PAGE', function($scope, TvShow, PER_PAGE) {
+app.controller('AddonsCtrl', ['$scope', 'Addon', 'PER_PAGE', '$routeParams', function($scope, Addon, PER_PAGE, $routeParams) {
   var showNum = 0;
   var finished = false;
   var size = PER_PAGE;
 
   $scope.waiting = false;
-  $scope.tvshows = [];
+  $scope.addons = [];
 
   $scope.nextPage = function() {
     if (finished) {
       return ;
     }
     $scope.waiting = true;
-    TvShow.page(showNum, size).then(function(data) {
-      data.tvshows = data.tvshows || [];
-      for (var i = 0; i < data.tvshows.length; i++) {
-        $scope.tvshows.push(data.tvshows[i]);
+    Addon.page($routeParams.content, showNum, size).then(function(data) {
+      data.addons = data.addons || [];
+      for (var i = 0; i < data.addons.length; i++) {
+        $scope.addons.push(data.addons[i]);
       }
       showNum += size;
       if (showNum + size > data.limits.total) {
