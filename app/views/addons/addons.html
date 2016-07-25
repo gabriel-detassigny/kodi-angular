@@ -1,11 +1,11 @@
-<h2>TV Shows</h2>
+<h2>Addons</h2>
 <div class="collapse navbar-collapse" id="navbar-collapse" ng-controller="MainCtrl">
   <ul class="nav navbar-nav navbar-right">
     <li ng-class="{active:isActive('/addons')}">
       <a ng-href="#/addons"><i class="fa fa-tv"></i> All</a>
     </li>
     <li ng-class="{active:isActive('/addons/audio')}">
-      <a ng-href="#/addons/audio"><i class="fa fa-tv"></i> Audio</a>
+      <a ng-href="#/addons/audio"><i class="fa fa-music"></i> Audio</a>
     </li>
     <li ng-class="{active:isActive('/addons/video')}">
       <a ng-href="#/addons/video"><i class="fa fa-film"></i> Video</a>
@@ -27,7 +27,10 @@
   </thead>
   <tbody infinite-scroll="nextPage()" infinite-scroll-disabled="waiting">
     <tr ng-repeat="addon in addons">
-      <td><a ng-href="#/addon/{{ addon.addonid }}/folder">{{ addon.name }}</a></td>
+      <td>
+        <a type="button" class="btn btn-xs btn-default" ng-href="#/addon/{{ addon.addonid }}/info"><i class="fa fa-info-circle"></i></a>
+        <a ng-href="#/addon/{{ addon.addonid }}/folder">{{ addon.name }}</a>
+      </td>
       <td>{{ addon.summary }}</td>
     </tr>
 

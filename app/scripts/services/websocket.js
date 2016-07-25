@@ -86,6 +86,8 @@ services.service('KodiWS', ['$q', '$window', 'KODI_URL', 'KODI_PORT', 'KODI_HTTP
    * @return url {string} - proper thumbnail url, for example: <code>http://192.168.2.124:8080/image/http%3a%2f%2fcdn-radiotime-logos.tunein.com%2fs100934q.png</code>
    */
   function getThumbnailURL(thumbUrl) {
+    if (!thumbUrl)
+      return thumbUrl;
     thumbUrl = thumbUrl.replace('image://', '');
     if (thumbUrl.charAt(thumbUrl.length - 1) === '/') {
       thumbUrl = thumbUrl.substring(0, thumbUrl.length - 1);

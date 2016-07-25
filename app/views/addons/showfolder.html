@@ -1,6 +1,7 @@
 <ol class="breadcrumb">
   <li><a ng-href="#/addons">Addons</a></li>
-  <li class="active">{{ addon.name }}</li>
+  <li class="active"> {{ addon.name }} </li>
+  <li> Folders | <a ng-href="#/addon/{{ addon.addonid }}/info">Info</a></li>
 </ol>
 
 <table class="table table-striped table-hover">
@@ -13,12 +14,18 @@
   </thread>
   <tbody>
     <tr ng-repeat="file in files">
-      <td><img class="thumb-list" src="{{ file.thumbnail | kodiThumbnailUrl }}"/></td>
+      <td><img class="thumb-list" ng-src="{{ file.thumbnail | kodiThumbnailUrl }}"/></td>
       <td>
         <button ng-show="{{file.filetype==='file'}}" type="button" class="btn btn-xs btn-default" ng-click="play(file)"><i class="fa fa-play"></i></button>
         <a ng-href="#/addon/{{ addon.addonid }}/folder/{{ file.file | encodeKodiFolder }}">{{ file.label }}</a>
       </td>
       <td>{{ file.filetype }}</td>
+    </tr>
+
+    <tr ng-show="waiting">
+      <td><i class="fa fa-spin fa-spinner"></i></td>
+      <td>Loading folders...</td>
+      <td />
     </tr>
   </tbody>
 </table>

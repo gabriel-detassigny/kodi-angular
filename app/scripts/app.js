@@ -71,6 +71,10 @@ var app = angular.module('kodiAngularApp', [
         templateUrl: 'views/music/showalbum.html',
         controller: 'AlbumViewCtrl'
       })
+      .when('/addon/:addonId/info', {
+        templateUrl: 'views/addons/showaddon.html',
+        controller: 'AddonViewCtrl'
+      })
       .when('/addon/:addonId/folder/:folder', {
         templateUrl: 'views/addons/showfolder.html',
         controller: 'FolderViewCtrl'

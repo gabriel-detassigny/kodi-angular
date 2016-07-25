@@ -1,27 +1,26 @@
 <ol class="breadcrumb">
-  <li><a ng-href="#/tvshows">TV Shows</a></li>
-  <li><a ng-href="#/tvshows/{{ season.tvshowId }}">{{ season.tvshow }}</a></li>
-  <li class="active">Season {{ season.season }}</li>
+  <li><a ng-href="#/addons">Addons</a></li>
+  <li class="active"> {{ addon.name }} </li>
+  <li> Info | <a ng-href="#/addon/{{ addon.addonid }}/folder">Folders</a></li>
 </ol>
 
-<table class="table table-striped table-hover">
-  <thead>
-    <tr>
-      <th>Episode</th>
-      <th>Rating</th>
-      <th>First aired</th>
-      <th>Seen</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="episode in season.episodes">
-      <td>
-        <button type="button" class="btn btn-xs btn-default" ng-click="play(episode.episodeid)"><i class="fa fa-play"></i></button>
-        <strong>{{ episode.label }}</strong>
-      </td>
-      <td>{{ episode.rating | number:1 }}</td>
-      <td>{{ episode.firstaired }}</td>
-      <td><i ng-if="episode.playcount > 0" class="fa fa-check"></i></td>
-    </tr>
-  </tbody>
-</table>
+<div class="row">
+  <div class="col-md-9">
+    <h2>{{ addon.name }}</h2>
+    <h4 style="opacity: 0.5">{{ addon.addonid }}</h4>
+  </div>
+  <div class="col-md-3">
+    <a type="button" class="btn btn btn-primary play-button" ng-click="execute(addon.addonid)">
+      <i class="fa fa-play"></i> Run
+    </a>
+  </div>
+</div>
+
+<p class="lead">{{ addon.summary }}</p>
+
+<div class="row">
+  <div class="col-md-12"><input type="checkbox" disabled="true" checked="{{addon.enabled}}"/> Enabled</div>
+</div>
+<div class="row">
+  <div class="col-md-12"><img src="{{ addon.thumbnail | kodiThumbnailUrl}}"/></div>
+</div>
