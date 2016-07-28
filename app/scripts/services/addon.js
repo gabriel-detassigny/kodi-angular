@@ -82,31 +82,6 @@ services.service('Addon', ['KodiWS', '$q', function(KodiWS, $q) {
     },
 
     /**
-     * Get information on a season.
-     *
-     * @param integer addonid : the ID of the Addon
-     * @param integer season : the season number.
-     * @return a callback with the season information.
-     */
-    findSeason: function(addonid, season) {
-      var deferred = $q.defer();
-      var result = {addonid: addonid, season: season};
-      KodiWS.send('Addons.GetAddonDetails', {properties: ['title'], addonid: parseInt(addonid)}).then(function(data) {
-        result.addon = data.addondetails.title;
-        KodiWS.send('VideoLibrary.GetAddons', {
-          properties: ['addon', 'rating', 'playcount', 'firstaired'],
-          addonid: parseInt(addonid),
-          season: parseInt(season),
-          sort: {method: 'addon'}
-        }).then(function(data) {
-          result.addons = data.addons;
-          deferred.resolve(result);
-        });
-      });
-      return deferred.promise;
-    },
-
-    /**
      * Play a file.
      *
      * @param integer addonId : the ID of the addon.
