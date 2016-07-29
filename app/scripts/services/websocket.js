@@ -92,7 +92,13 @@ services.service('KodiWS', ['$q', '$window', 'KODI_URL', 'KODI_PORT', 'KODI_HTTP
     if (thumbUrl.charAt(thumbUrl.length - 1) === '/') {
       thumbUrl = thumbUrl.substring(0, thumbUrl.length - 1);
     }
-    return 'http://' + KODI_URL + ':' + KODI_HTTP_PORT + '/image/' + thumbUrl;
+    if (thumbUrl.charAt(0) === '/') {
+      thumbUrl = thumbUrl.substring(1);
+    }
+    var tmpThumbUrl = decodeURIComponent(thumbUrl);
+    if (tmpThumbUrl.indexOf('http://') === 0 || tmpThumbUrl.indexOf('https://') === 0)
+      return tmpThumbUrl;
+    return 'http://' + $btp.getCurrent().url + ':' + $btp.getCurrent().http_port + '/image/' + thumbUrl;
   }
 
   var service = {
