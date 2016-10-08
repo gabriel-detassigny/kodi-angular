@@ -98,7 +98,7 @@ services.service('KodiWS', ['$q', '$window', 'KODI_URL', 'KODI_PORT', 'KODI_HTTP
     var tmpThumbUrl = decodeURIComponent(thumbUrl);
     if (tmpThumbUrl.indexOf('http://') === 0 || tmpThumbUrl.indexOf('https://') === 0)
       return tmpThumbUrl;
-    return 'http://' + $btp.getCurrent().url + ':' + $btp.getCurrent().http_port + '/image/' + thumbUrl;
+    return 'http://' + KODI_URL + ':' + KODI_HTTP_PORT + '/image/' + thumbUrl;
   }
 
   var service = {
