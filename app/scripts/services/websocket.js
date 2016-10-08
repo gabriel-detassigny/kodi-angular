@@ -88,17 +88,16 @@ services.service('KodiWS', ['$q', '$window', 'KODI_URL', 'KODI_PORT', 'KODI_HTTP
   function getThumbnailURL(thumbUrl) {
     if (!thumbUrl)
       return thumbUrl;
-    thumbUrl = thumbUrl.replace('image://', '');
+    thumbUrl = decodeURIComponent(thumbUrl.replace('image://', ''));
     if (thumbUrl.charAt(thumbUrl.length - 1) === '/') {
       thumbUrl = thumbUrl.substring(0, thumbUrl.length - 1);
     }
     if (thumbUrl.charAt(0) === '/') {
       thumbUrl = thumbUrl.substring(1);
     }
-    var tmpThumbUrl = decodeURIComponent(thumbUrl);
-    if (tmpThumbUrl.indexOf('http://') === 0 || tmpThumbUrl.indexOf('https://') === 0)
-      return tmpThumbUrl;
-    return 'http://' + KODI_URL + ':' + KODI_HTTP_PORT + '/image/' + thumbUrl;
+    if (thumbUrl.indexOf('http://') === 0 || thumbUrl.indexOf('https://') === 0)
+      return thumbUrl;
+    return 'http://' + KODI_URL + ':' + KODI_HTTP_PORT + '/image/' + encodeURIComponent(thumbUrl);
   }
 
   var service = {
