@@ -13,6 +13,8 @@
 
 var services = angular.module('kodiServices', []); // jshint ignore:line
 var app = angular.module('kodiAngularApp', [
+    'encodeKodiFolder',
+    'kodiThumbnailUrl',
     'ngResource',
     'ngRoute',
     'infinite-scroll',
@@ -68,6 +70,30 @@ var app = angular.module('kodiAngularApp', [
       .when('/music/:artistId/albums/:albumId', {
         templateUrl: 'views/music/showalbum.html',
         controller: 'AlbumViewCtrl'
+      })
+      .when('/addon/:addonId/info', {
+        templateUrl: 'views/addons/showaddon.html',
+        controller: 'AddonViewCtrl'
+      })
+      .when('/addon/:addonId/folder/:folder', {
+        templateUrl: 'views/addons/showfolder.html',
+        controller: 'FolderViewCtrl'
+      })
+      .when('/addon/:addonId/folder', {
+        templateUrl: 'views/addons/showfolder.html',
+        controller: 'FolderViewCtrl'
+      })
+      .when('/addon/:addonId', {
+        templateUrl: 'views/addons/showaddon.html',
+        controller: 'AddonViewCtrl'
+      })
+      .when('/addons/:content', {
+        templateUrl: 'views/addons/addons.html',
+        controller: 'AddonsCtrl'
+      })
+      .when('/addons', {
+        templateUrl: 'views/addons/addons.html',
+        controller: 'AddonsCtrl'
       })
       .when('/error', {
         templateUrl: 'views/error.html',

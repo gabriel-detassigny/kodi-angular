@@ -16,6 +16,7 @@ app.controller('MoviesCtrl', ['$scope', 'Movie', 'PER_PAGE', function($scope, Mo
     }
     $scope.waiting = true;
     Movie.page(movieNum, size).then(function(data) {
+      data.movies = data.movies || [];
       for (var i = 0; i < data.movies.length; i++) {
         $scope.movies.push(data.movies[i]);
       }

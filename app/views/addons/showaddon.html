@@ -1,0 +1,26 @@
+<ol class="breadcrumb">
+  <li><a ng-href="#/addons">Addons</a></li>
+  <li class="active"> {{ addon.name }} </li>
+  <li> Info | <a ng-href="#/addon/{{ addon.addonid }}/folder">Folders</a></li>
+</ol>
+
+<div class="row">
+  <div class="col-md-9">
+    <h2>{{ addon.name }}</h2>
+    <h4 style="opacity: 0.5">{{ addon.addonid }}</h4>
+  </div>
+  <div class="col-md-3">
+    <a type="button" class="btn btn btn-primary play-button" ng-click="execute(addon.addonid)">
+      <i class="fa fa-play"></i> Run
+    </a>
+  </div>
+</div>
+
+<p class="lead">{{ addon.summary }}</p>
+
+<div class="row">
+  <div class="col-md-12"><input type="checkbox" disabled="true" checked="{{addon.enabled}}"/> Enabled</div>
+</div>
+<div class="row">
+  <div class="col-md-12"><img src="{{ addon.thumbnail | kodiThumbnailUrl}}"/></div>
+</div>
